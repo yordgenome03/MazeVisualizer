@@ -1,0 +1,587 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A1BAC9452C3891AD00F96F77 /* MazeVisualizerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BAC9442C3891AD00F96F77 /* MazeVisualizerApp.swift */; };
+		A1BAC9472C3891AD00F96F77 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BAC9462C3891AD00F96F77 /* ContentView.swift */; };
+		A1BAC9492C3891AF00F96F77 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1BAC9482C3891AF00F96F77 /* Assets.xcassets */; };
+		A1BAC94C2C3891AF00F96F77 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1BAC94B2C3891AF00F96F77 /* Preview Assets.xcassets */; };
+		A1BAC9562C3891AF00F96F77 /* MazeVisualizerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BAC9552C3891AF00F96F77 /* MazeVisualizerTests.swift */; };
+		A1BAC9602C3891AF00F96F77 /* MazeVisualizerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BAC95F2C3891AF00F96F77 /* MazeVisualizerUITests.swift */; };
+		A1BAC9622C3891AF00F96F77 /* MazeVisualizerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BAC9612C3891AF00F96F77 /* MazeVisualizerUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A1BAC9522C3891AF00F96F77 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A1BAC9392C3891AD00F96F77 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A1BAC9402C3891AD00F96F77;
+			remoteInfo = MazeVisualizer;
+		};
+		A1BAC95C2C3891AF00F96F77 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A1BAC9392C3891AD00F96F77 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A1BAC9402C3891AD00F96F77;
+			remoteInfo = MazeVisualizer;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		A1BAC9412C3891AD00F96F77 /* MazeVisualizer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MazeVisualizer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A1BAC9442C3891AD00F96F77 /* MazeVisualizerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeVisualizerApp.swift; sourceTree = "<group>"; };
+		A1BAC9462C3891AD00F96F77 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		A1BAC9482C3891AF00F96F77 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A1BAC94B2C3891AF00F96F77 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		A1BAC9512C3891AF00F96F77 /* MazeVisualizerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MazeVisualizerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A1BAC9552C3891AF00F96F77 /* MazeVisualizerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeVisualizerTests.swift; sourceTree = "<group>"; };
+		A1BAC95B2C3891AF00F96F77 /* MazeVisualizerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MazeVisualizerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A1BAC95F2C3891AF00F96F77 /* MazeVisualizerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeVisualizerUITests.swift; sourceTree = "<group>"; };
+		A1BAC9612C3891AF00F96F77 /* MazeVisualizerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeVisualizerUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A1BAC93E2C3891AD00F96F77 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A1BAC94E2C3891AF00F96F77 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A1BAC9582C3891AF00F96F77 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A1BAC9382C3891AD00F96F77 = {
+			isa = PBXGroup;
+			children = (
+				A1BAC9432C3891AD00F96F77 /* MazeVisualizer */,
+				A1BAC9542C3891AF00F96F77 /* MazeVisualizerTests */,
+				A1BAC95E2C3891AF00F96F77 /* MazeVisualizerUITests */,
+				A1BAC9422C3891AD00F96F77 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A1BAC9422C3891AD00F96F77 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A1BAC9412C3891AD00F96F77 /* MazeVisualizer.app */,
+				A1BAC9512C3891AF00F96F77 /* MazeVisualizerTests.xctest */,
+				A1BAC95B2C3891AF00F96F77 /* MazeVisualizerUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A1BAC9432C3891AD00F96F77 /* MazeVisualizer */ = {
+			isa = PBXGroup;
+			children = (
+				A1BAC9442C3891AD00F96F77 /* MazeVisualizerApp.swift */,
+				A1BAC9462C3891AD00F96F77 /* ContentView.swift */,
+				A1BAC9482C3891AF00F96F77 /* Assets.xcassets */,
+				A1BAC94A2C3891AF00F96F77 /* Preview Content */,
+			);
+			path = MazeVisualizer;
+			sourceTree = "<group>";
+		};
+		A1BAC94A2C3891AF00F96F77 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				A1BAC94B2C3891AF00F96F77 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		A1BAC9542C3891AF00F96F77 /* MazeVisualizerTests */ = {
+			isa = PBXGroup;
+			children = (
+				A1BAC9552C3891AF00F96F77 /* MazeVisualizerTests.swift */,
+			);
+			path = MazeVisualizerTests;
+			sourceTree = "<group>";
+		};
+		A1BAC95E2C3891AF00F96F77 /* MazeVisualizerUITests */ = {
+			isa = PBXGroup;
+			children = (
+				A1BAC95F2C3891AF00F96F77 /* MazeVisualizerUITests.swift */,
+				A1BAC9612C3891AF00F96F77 /* MazeVisualizerUITestsLaunchTests.swift */,
+			);
+			path = MazeVisualizerUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A1BAC9402C3891AD00F96F77 /* MazeVisualizer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A1BAC9652C3891AF00F96F77 /* Build configuration list for PBXNativeTarget "MazeVisualizer" */;
+			buildPhases = (
+				A1BAC93D2C3891AD00F96F77 /* Sources */,
+				A1BAC93E2C3891AD00F96F77 /* Frameworks */,
+				A1BAC93F2C3891AD00F96F77 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MazeVisualizer;
+			productName = MazeVisualizer;
+			productReference = A1BAC9412C3891AD00F96F77 /* MazeVisualizer.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A1BAC9502C3891AF00F96F77 /* MazeVisualizerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A1BAC9682C3891AF00F96F77 /* Build configuration list for PBXNativeTarget "MazeVisualizerTests" */;
+			buildPhases = (
+				A1BAC94D2C3891AF00F96F77 /* Sources */,
+				A1BAC94E2C3891AF00F96F77 /* Frameworks */,
+				A1BAC94F2C3891AF00F96F77 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A1BAC9532C3891AF00F96F77 /* PBXTargetDependency */,
+			);
+			name = MazeVisualizerTests;
+			productName = MazeVisualizerTests;
+			productReference = A1BAC9512C3891AF00F96F77 /* MazeVisualizerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		A1BAC95A2C3891AF00F96F77 /* MazeVisualizerUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A1BAC96B2C3891AF00F96F77 /* Build configuration list for PBXNativeTarget "MazeVisualizerUITests" */;
+			buildPhases = (
+				A1BAC9572C3891AF00F96F77 /* Sources */,
+				A1BAC9582C3891AF00F96F77 /* Frameworks */,
+				A1BAC9592C3891AF00F96F77 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A1BAC95D2C3891AF00F96F77 /* PBXTargetDependency */,
+			);
+			name = MazeVisualizerUITests;
+			productName = MazeVisualizerUITests;
+			productReference = A1BAC95B2C3891AF00F96F77 /* MazeVisualizerUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A1BAC9392C3891AD00F96F77 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1520;
+				LastUpgradeCheck = 1520;
+				TargetAttributes = {
+					A1BAC9402C3891AD00F96F77 = {
+						CreatedOnToolsVersion = 15.2;
+					};
+					A1BAC9502C3891AF00F96F77 = {
+						CreatedOnToolsVersion = 15.2;
+						TestTargetID = A1BAC9402C3891AD00F96F77;
+					};
+					A1BAC95A2C3891AF00F96F77 = {
+						CreatedOnToolsVersion = 15.2;
+						TestTargetID = A1BAC9402C3891AD00F96F77;
+					};
+				};
+			};
+			buildConfigurationList = A1BAC93C2C3891AD00F96F77 /* Build configuration list for PBXProject "MazeVisualizer" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A1BAC9382C3891AD00F96F77;
+			productRefGroup = A1BAC9422C3891AD00F96F77 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A1BAC9402C3891AD00F96F77 /* MazeVisualizer */,
+				A1BAC9502C3891AF00F96F77 /* MazeVisualizerTests */,
+				A1BAC95A2C3891AF00F96F77 /* MazeVisualizerUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A1BAC93F2C3891AD00F96F77 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A1BAC94C2C3891AF00F96F77 /* Preview Assets.xcassets in Resources */,
+				A1BAC9492C3891AF00F96F77 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A1BAC94F2C3891AF00F96F77 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A1BAC9592C3891AF00F96F77 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A1BAC93D2C3891AD00F96F77 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A1BAC9472C3891AD00F96F77 /* ContentView.swift in Sources */,
+				A1BAC9452C3891AD00F96F77 /* MazeVisualizerApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A1BAC94D2C3891AF00F96F77 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A1BAC9562C3891AF00F96F77 /* MazeVisualizerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A1BAC9572C3891AF00F96F77 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A1BAC9602C3891AF00F96F77 /* MazeVisualizerUITests.swift in Sources */,
+				A1BAC9622C3891AF00F96F77 /* MazeVisualizerUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A1BAC9532C3891AF00F96F77 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A1BAC9402C3891AD00F96F77 /* MazeVisualizer */;
+			targetProxy = A1BAC9522C3891AF00F96F77 /* PBXContainerItemProxy */;
+		};
+		A1BAC95D2C3891AF00F96F77 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A1BAC9402C3891AD00F96F77 /* MazeVisualizer */;
+			targetProxy = A1BAC95C2C3891AF00F96F77 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		A1BAC9632C3891AF00F96F77 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A1BAC9642C3891AF00F96F77 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A1BAC9662C3891AF00F96F77 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"MazeVisualizer/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = yordgenome.com.MazeVisualizer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A1BAC9672C3891AF00F96F77 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"MazeVisualizer/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = yordgenome.com.MazeVisualizer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		A1BAC9692C3891AF00F96F77 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = yordgenome.com.MazeVisualizerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MazeVisualizer.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MazeVisualizer";
+			};
+			name = Debug;
+		};
+		A1BAC96A2C3891AF00F96F77 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = yordgenome.com.MazeVisualizerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MazeVisualizer.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MazeVisualizer";
+			};
+			name = Release;
+		};
+		A1BAC96C2C3891AF00F96F77 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = yordgenome.com.MazeVisualizerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = MazeVisualizer;
+			};
+			name = Debug;
+		};
+		A1BAC96D2C3891AF00F96F77 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = yordgenome.com.MazeVisualizerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = MazeVisualizer;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A1BAC93C2C3891AD00F96F77 /* Build configuration list for PBXProject "MazeVisualizer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A1BAC9632C3891AF00F96F77 /* Debug */,
+				A1BAC9642C3891AF00F96F77 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A1BAC9652C3891AF00F96F77 /* Build configuration list for PBXNativeTarget "MazeVisualizer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A1BAC9662C3891AF00F96F77 /* Debug */,
+				A1BAC9672C3891AF00F96F77 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A1BAC9682C3891AF00F96F77 /* Build configuration list for PBXNativeTarget "MazeVisualizerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A1BAC9692C3891AF00F96F77 /* Debug */,
+				A1BAC96A2C3891AF00F96F77 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A1BAC96B2C3891AF00F96F77 /* Build configuration list for PBXNativeTarget "MazeVisualizerUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A1BAC96C2C3891AF00F96F77 /* Debug */,
+				A1BAC96D2C3891AF00F96F77 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A1BAC9392C3891AD00F96F77 /* Project object */;
+}
