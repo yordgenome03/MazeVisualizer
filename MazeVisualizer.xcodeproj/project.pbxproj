@@ -29,6 +29,7 @@
 		A1E8C3102C3A808C006C7F85 /* MazeVisualizationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E8C30F2C3A808C006C7F85 /* MazeVisualizationView.swift */; };
 		A1E8C3122C3AFCE5006C7F85 /* MazeExplorer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E8C3112C3AFCE5006C7F85 /* MazeExplorer.swift */; };
 		A1E8C3162C3B0950006C7F85 /* GrowingTreeMazeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E8C3152C3B0950006C7F85 /* GrowingTreeMazeGenerator.swift */; };
+		A1E8C3182C3B1071006C7F85 /* BinaryTreeMazeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E8C3172C3B1071006C7F85 /* BinaryTreeMazeGenerator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +75,7 @@
 		A1E8C30F2C3A808C006C7F85 /* MazeVisualizationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeVisualizationView.swift; sourceTree = "<group>"; };
 		A1E8C3112C3AFCE5006C7F85 /* MazeExplorer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeExplorer.swift; sourceTree = "<group>"; };
 		A1E8C3152C3B0950006C7F85 /* GrowingTreeMazeGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowingTreeMazeGenerator.swift; sourceTree = "<group>"; };
+		A1E8C3172C3B1071006C7F85 /* BinaryTreeMazeGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinaryTreeMazeGenerator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -228,8 +230,9 @@
 			isa = PBXGroup;
 			children = (
 				A1BAC97B2C39F5CA00F96F77 /* MazeGenerator.swift */,
-				A1E8C3152C3B0950006C7F85 /* GrowingTreeMazeGenerator.swift */,
 				A1BAC96F2C3891DB00F96F77 /* RecursiveBacktrackingMazeGenerator.swift */,
+				A1E8C3172C3B1071006C7F85 /* BinaryTreeMazeGenerator.swift */,
+				A1E8C3152C3B0950006C7F85 /* GrowingTreeMazeGenerator.swift */,
 			);
 			path = MazeGenerator;
 			sourceTree = "<group>";
@@ -374,6 +377,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1E8C3182C3B1071006C7F85 /* BinaryTreeMazeGenerator.swift in Sources */,
 				A1BAC9472C3891AD00F96F77 /* MazeGeneratorView.swift in Sources */,
 				A1BAC9702C3891DB00F96F77 /* RecursiveBacktrackingMazeGenerator.swift in Sources */,
 				A1E8C3122C3AFCE5006C7F85 /* MazeExplorer.swift in Sources */,

@@ -10,6 +10,7 @@ import SwiftUI
 extension Constants {
     static let recursiveBacktracking = "Recursive Backtracking"
     static let growingTree = "Growing Tree"
+    static let binaryTree = "Binary Tree"
 }
 
 @MainActor
@@ -28,7 +29,9 @@ class MazeGeneratorViewModel: ObservableObject {
             self.maze = Array(repeating: Array(repeating: .wall, count: width), count: height)
         }
     }
-    let generatorList: [String] = [Constants.recursiveBacktracking, Constants.growingTree]
+    let generatorList: [String] = [Constants.recursiveBacktracking,
+                                   Constants.growingTree,
+                                   Constants.binaryTree]
     @Published var selectedGenerator: String = Constants.recursiveBacktracking
     private var currentTask: Task<Void, Never>?
     
@@ -44,6 +47,7 @@ class MazeGeneratorViewModel: ObservableObject {
             switch selectedGenerator {
             case Constants.recursiveBacktracking: return RecursiveBacktrackingMazeGenerator()
             case Constants.growingTree: return GrowingTreeMazeGenerator()
+            case Constants.binaryTree: return BinaryTreeMazeGenerator()
             default: return RecursiveBacktrackingMazeGenerator()
             }
         }()
