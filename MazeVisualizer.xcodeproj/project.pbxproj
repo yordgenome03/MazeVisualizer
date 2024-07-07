@@ -21,12 +21,13 @@
 		A1BAC97C2C39F5CA00F96F77 /* MazeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BAC97B2C39F5CA00F96F77 /* MazeGenerator.swift */; };
 		A1BAC9822C39FB3500F96F77 /* MazeExplorerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BAC9812C39FB3500F96F77 /* MazeExplorerView.swift */; };
 		A1E8C2FE2C39FBE6006C7F85 /* MazeExplorerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E8C2FD2C39FBE6006C7F85 /* MazeExplorerViewModel.swift */; };
-		A1E8C3002C39FCF2006C7F85 /* MazeVisualizationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E8C2FF2C39FCF2006C7F85 /* MazeVisualizationView.swift */; };
 		A1E8C3022C39FF7E006C7F85 /* MazeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E8C3012C39FF7E006C7F85 /* MazeData.swift */; };
 		A1E8C3052C3A3C0C006C7F85 /* DFSMazeExplorer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E8C3042C3A3C0C006C7F85 /* DFSMazeExplorer.swift */; };
 		A1E8C3072C3A438A006C7F85 /* MazeExplorationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E8C3062C3A438A006C7F85 /* MazeExplorationView.swift */; };
 		A1E8C3092C3A4907006C7F85 /* BFSMazeExplorer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E8C3082C3A4907006C7F85 /* BFSMazeExplorer.swift */; };
 		A1E8C30C2C3A75EA006C7F85 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E8C30B2C3A75EA006C7F85 /* Constants.swift */; };
+		A1E8C3102C3A808C006C7F85 /* MazeVisualizationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E8C30F2C3A808C006C7F85 /* MazeVisualizationView.swift */; };
+		A1E8C3122C3AFCE5006C7F85 /* MazeExplorer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E8C3112C3AFCE5006C7F85 /* MazeExplorer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,12 +65,13 @@
 		A1BAC97B2C39F5CA00F96F77 /* MazeGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeGenerator.swift; sourceTree = "<group>"; };
 		A1BAC9812C39FB3500F96F77 /* MazeExplorerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeExplorerView.swift; sourceTree = "<group>"; };
 		A1E8C2FD2C39FBE6006C7F85 /* MazeExplorerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeExplorerViewModel.swift; sourceTree = "<group>"; };
-		A1E8C2FF2C39FCF2006C7F85 /* MazeVisualizationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeVisualizationView.swift; sourceTree = "<group>"; };
 		A1E8C3012C39FF7E006C7F85 /* MazeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeData.swift; sourceTree = "<group>"; };
 		A1E8C3042C3A3C0C006C7F85 /* DFSMazeExplorer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DFSMazeExplorer.swift; sourceTree = "<group>"; };
 		A1E8C3062C3A438A006C7F85 /* MazeExplorationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeExplorationView.swift; sourceTree = "<group>"; };
 		A1E8C3082C3A4907006C7F85 /* BFSMazeExplorer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BFSMazeExplorer.swift; sourceTree = "<group>"; };
 		A1E8C30B2C3A75EA006C7F85 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		A1E8C30F2C3A808C006C7F85 /* MazeVisualizationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeVisualizationView.swift; sourceTree = "<group>"; };
+		A1E8C3112C3AFCE5006C7F85 /* MazeExplorer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeExplorer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,10 +162,8 @@
 		A1BAC96E2C3891B500F96F77 /* Algorithms */ = {
 			isa = PBXGroup;
 			children = (
-				A1BAC97B2C39F5CA00F96F77 /* MazeGenerator.swift */,
-				A1E8C3042C3A3C0C006C7F85 /* DFSMazeExplorer.swift */,
-				A1E8C3082C3A4907006C7F85 /* BFSMazeExplorer.swift */,
-				A1BAC96F2C3891DB00F96F77 /* DiggingMazeGenerator.swift */,
+				A1E8C3132C3AFD2A006C7F85 /* MazeGenerator */,
+				A1E8C3142C3AFD3E006C7F85 /* MazeExplorer */,
 			);
 			path = Algorithms;
 			sourceTree = "<group>";
@@ -209,7 +209,7 @@
 			isa = PBXGroup;
 			children = (
 				A1E8C3062C3A438A006C7F85 /* MazeExplorationView.swift */,
-				A1E8C2FF2C39FCF2006C7F85 /* MazeVisualizationView.swift */,
+				A1E8C30F2C3A808C006C7F85 /* MazeVisualizationView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -220,6 +220,25 @@
 				A1E8C30B2C3A75EA006C7F85 /* Constants.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		A1E8C3132C3AFD2A006C7F85 /* MazeGenerator */ = {
+			isa = PBXGroup;
+			children = (
+				A1BAC97B2C39F5CA00F96F77 /* MazeGenerator.swift */,
+				A1BAC96F2C3891DB00F96F77 /* DiggingMazeGenerator.swift */,
+			);
+			path = MazeGenerator;
+			sourceTree = "<group>";
+		};
+		A1E8C3142C3AFD3E006C7F85 /* MazeExplorer */ = {
+			isa = PBXGroup;
+			children = (
+				A1E8C3112C3AFCE5006C7F85 /* MazeExplorer.swift */,
+				A1E8C3042C3A3C0C006C7F85 /* DFSMazeExplorer.swift */,
+				A1E8C3082C3A4907006C7F85 /* BFSMazeExplorer.swift */,
+			);
+			path = MazeExplorer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -354,12 +373,13 @@
 			files = (
 				A1BAC9472C3891AD00F96F77 /* MazeGeneratorView.swift in Sources */,
 				A1BAC9702C3891DB00F96F77 /* DiggingMazeGenerator.swift in Sources */,
+				A1E8C3122C3AFCE5006C7F85 /* MazeExplorer.swift in Sources */,
 				A1E8C2FE2C39FBE6006C7F85 /* MazeExplorerViewModel.swift in Sources */,
 				A1BAC9722C38937000F96F77 /* UserDefaultsService.swift in Sources */,
 				A1E8C3022C39FF7E006C7F85 /* MazeData.swift in Sources */,
+				A1E8C3102C3A808C006C7F85 /* MazeVisualizationView.swift in Sources */,
 				A1E8C3092C3A4907006C7F85 /* BFSMazeExplorer.swift in Sources */,
 				A1BAC9762C39E4E300F96F77 /* MazeGeneratorViewModel.swift in Sources */,
-				A1E8C3002C39FCF2006C7F85 /* MazeVisualizationView.swift in Sources */,
 				A1BAC97C2C39F5CA00F96F77 /* MazeGenerator.swift in Sources */,
 				A1BAC9782C39E50800F96F77 /* ContentView.swift in Sources */,
 				A1E8C3052C3A3C0C006C7F85 /* DFSMazeExplorer.swift in Sources */,

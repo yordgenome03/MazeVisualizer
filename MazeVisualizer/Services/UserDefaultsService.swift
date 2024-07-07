@@ -20,7 +20,6 @@ class UserDefaultsService {
         do {
             let data = try JSONEncoder().encode(mazeData)
             UserDefaults.standard.set(data, forKey: mazeData.name)
-            print("Maze saved successfully")
         } catch {
             print("Failed to save maze: \(error)")
         }
@@ -30,10 +29,8 @@ class UserDefaultsService {
         guard let data = UserDefaults.standard.data(forKey: name) else { return nil }
         do {
             let mazeData = try JSONDecoder().decode(MazeData.self, from: data)
-            print("Maze loaded successfully")
             return mazeData
         } catch {
-            print("Failed to load maze: \(error)")
             return nil
         }
     }
@@ -48,7 +45,6 @@ class UserDefaultsService {
         var mazeList = getMazeList()
         mazeList.removeAll { $0 == mazeData.name }
         saveMazeList(mazeList)
-        print("Maze deleted successfully")
     }
 
     static func deleteMazes(_ mazeDataList: [MazeData]) {
@@ -58,7 +54,6 @@ class UserDefaultsService {
             mazeList.removeAll { $0 == mazeData.name }
         }
         saveMazeList(mazeList)
-        print("Mazes deleted successfully")
     }
 
     private static func getMazeList() -> [String] {

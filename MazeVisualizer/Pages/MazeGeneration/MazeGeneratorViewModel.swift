@@ -56,7 +56,7 @@ class MazeGeneratorViewModel: ObservableObject {
                 await MainActor.run {
                     self.maze = step
                 }
-                try? await Task.sleep(nanoseconds: 80_000_000)
+                try? await Task.sleep(nanoseconds: 50_000_000)
             }
             
             completed = true

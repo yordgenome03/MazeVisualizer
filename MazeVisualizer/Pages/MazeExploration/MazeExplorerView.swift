@@ -37,7 +37,8 @@ struct MazeExplorerView: View {
             if viewModel.isExploring {
                 MazeExplorationView(maze: viewModel.currentMaze)
                     .frame(maxWidth: .infinity, alignment: .center)
-            } else {
+            } 
+            else {
                 MazeVisualizationView(maze: viewModel.selectedMazeData.maze)
                     .frame(maxWidth: .infinity, alignment: .center)
             }

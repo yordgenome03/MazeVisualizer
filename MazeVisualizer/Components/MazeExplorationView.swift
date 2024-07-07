@@ -23,7 +23,7 @@ struct MazeExplorationView: View {
             }
         }
     }
-
+    
     private func color(for cell: ExplorationState) -> Color {
         switch cell {
         case .notExplored:
@@ -36,6 +36,8 @@ struct MazeExplorationView: View {
             return .green
         case .goal:
             return .red
+        case .shortestPath:
+            return .blue
         }
     }
 }
@@ -44,7 +46,7 @@ struct MazeExplorationView: View {
     MazeExplorationView(maze: MazeData.default.maze.map {
         $0.map { maze in
             switch maze {
-            case .path: return ExplorationState.path
+            case .path: return ExplorationState.path(0)
             case .wall: return ExplorationState.wall
             case .start: return ExplorationState.start
             case .goal: return ExplorationState.goal

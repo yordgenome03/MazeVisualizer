@@ -16,6 +16,7 @@ class MazeExplorerViewModel: ObservableObject {
     @Published var selectedExplorer: String = "DFS"
     @Published var completed = false
     @Published var isExploring = false
+    @Published var isFinding = false
     private var currentTask: Task<Void, Never>?
 
     init() {
@@ -57,7 +58,7 @@ class MazeExplorerViewModel: ObservableObject {
                 await MainActor.run {
                     self.currentMaze = step
                 }
-                try? await Task.sleep(nanoseconds: 100_000_000)
+                try? await Task.sleep(nanoseconds: 20_000_000)
             }
             
             completed = true
