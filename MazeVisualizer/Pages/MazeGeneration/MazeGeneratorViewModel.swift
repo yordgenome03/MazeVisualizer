@@ -28,7 +28,7 @@ class MazeGeneratorViewModel: ObservableObject {
             self.maze = Array(repeating: Array(repeating: .wall, count: width), count: height)
         }
     }
-    let generatorList: [String] = [Constants.recursiveBacktracking]
+    let generatorList: [String] = [Constants.recursiveBacktracking, Constants.growingTree]
     @Published var selectedGenerator: String = Constants.recursiveBacktracking
     private var currentTask: Task<Void, Never>?
     
@@ -42,9 +42,9 @@ class MazeGeneratorViewModel: ObservableObject {
 
         let generator: MazeGenerator = {
             switch selectedGenerator {
-            case Constants.recursiveBacktracking: return DiggingMazeGenerator()
-            case Constants.growingTree: return DiggingMazeGenerator()
-            default: return DiggingMazeGenerator()
+            case Constants.recursiveBacktracking: return RecursiveBacktrackingMazeGenerator()
+            case Constants.growingTree: return GrowingTreeMazeGenerator()
+            default: return RecursiveBacktrackingMazeGenerator()
             }
         }()
         

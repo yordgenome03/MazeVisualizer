@@ -1,5 +1,5 @@
 //
-//  MazeGenerator.swift
+//  RecursiveBacktrackingMazeGenerator.swift
 //  MazeVisualizer
 //
 //  Created by yotahara on 2024/07/06.
@@ -7,9 +7,9 @@
 
 import Foundation
 
-class DiggingMazeGenerator: MazeGenerator {
+class RecursiveBacktrackingMazeGenerator: MazeGenerator {
     
-    func generateMaze(width: Int, height: Int) -> [[[MazeCellState]]] {        
+    func generateMaze(width: Int, height: Int) -> [[[MazeCellState]]] {
         var maze = Array(repeating: Array(repeating: MazeCellState.wall, count: width), count: height)
         var stack: [(Int, Int)] = []
         var steps: [[[MazeCellState]]] = []
@@ -31,12 +31,11 @@ class DiggingMazeGenerator: MazeGenerator {
                 let nx = x + dx
                 let ny = y + dy
                 
-                if nx > 0 && nx < width - 1 && ny > 0 && ny < height - 1 && maze[ny][nx] == .wall {
-                    maze[ny][nx] = .path
-                    maze[y + dy / 2][x + dx / 2] = .path
+                if isValidPosition(nx, ny, width, height) && maze[ny][nx] == .wall {
+                    carvePath(&maze, from: (x, y), to: (nx, ny))
                     stack.append((nx, ny))
                     moved = true
-                    steps.append(maze)
+                    steps.append(maze.map { $0 })
                     break
                 }
             }
@@ -46,12 +45,27 @@ class DiggingMazeGenerator: MazeGenerator {
             }
         }
         
+        setStartAndGoal(&maze, startX, startY, goalX, goalY)
+        steps.append(maze.map { $0 })
+        
+        return steps
+    }
+    
+    private func isValidPosition(_ x: Int, _ y: Int, _ width: Int, _ height: Int) -> Bool {
+        return x > 0 && x < width - 1 && y > 0 && y < height - 1
+    }
+    
+    private func carvePath(_ maze: inout [[MazeCellState]], from: (Int, Int), to: (Int, Int)) {
+        let (x1, y1) = from
+        let (x2, y2) = to
+        maze[y2][x2] = .path
+        maze[(y1 + y2) / 2][(x1 + x2) / 2] = .path
+    }
+    
+    private func setStartAndGoal(_ maze: inout [[MazeCellState]], _ startX: Int, _ startY: Int, _ goalX: Int, _ goalY: Int) {
         maze[startY][startX] = .path
         maze[startY - 1][startX] = .start
         maze[goalY][goalX] = .path
         maze[goalY + 1][goalX] = .goal
-        steps.append(maze)
-        
-        return steps
     }
 }
