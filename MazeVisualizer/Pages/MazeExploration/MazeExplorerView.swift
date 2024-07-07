@@ -35,7 +35,8 @@ struct MazeExplorerView: View {
             }
             
             if viewModel.isExploring {
-                MazeExplorationView(maze: viewModel.currentMaze)
+                MazeExplorationView(maze: viewModel.currentMaze,
+                                    shortestDistance: viewModel.shortestDistance)
                     .frame(maxWidth: .infinity, alignment: .center)
             } 
             else {

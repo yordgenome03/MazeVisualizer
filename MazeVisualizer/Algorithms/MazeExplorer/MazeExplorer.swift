@@ -8,7 +8,7 @@
 import Foundation
 
 protocol MazeExplorer {
-    func exploreMaze(maze: [[MazeCellState]], start: (Int, Int)) -> [[[ExplorationState]]]
+    func exploreMaze(maze: [[MazeCellState]], start: (Int, Int)) -> (steps: [[[ExplorationState]]], shortestDistance: Int?)
 }
 
 enum ExplorationState: Equatable {

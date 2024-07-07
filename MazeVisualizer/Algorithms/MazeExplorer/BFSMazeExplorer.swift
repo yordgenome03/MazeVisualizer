@@ -9,7 +9,7 @@ import Foundation
 
 class BFSMazeExplorer: MazeExplorer {
     
-    func exploreMaze(maze: [[MazeCellState]], start: (Int, Int)) -> [[[ExplorationState]]] {
+    func exploreMaze(maze: [[MazeCellState]], start: (Int, Int)) -> (steps: [[[ExplorationState]]], shortestDistance: Int?) {
         var currentStates: [[ExplorationState]] = Array(repeating: Array(repeating: .notExplored, count: maze[0].count), count: maze.count)
         var queue: [(Int, Int, Int)] = [(start.0, start.1, 0)]  // (x, y, distance)
         var steps: [[[ExplorationState]]] = []
@@ -20,6 +20,7 @@ class BFSMazeExplorer: MazeExplorer {
         steps.append(currentStates.map { $0 })
 
         var goalPosition: (Int, Int)? = nil
+        var shortestDistance: Int? = nil
 
         while !queue.isEmpty {
             let (x, y, dist) = queue.removeFirst()
@@ -28,6 +29,7 @@ class BFSMazeExplorer: MazeExplorer {
                 currentStates[y][x] = .goal
                 steps.append(currentStates.map { $0 })
                 goalPosition = (x, y)
+                shortestDistance = dist
                 break
             }
 
@@ -72,6 +74,6 @@ class BFSMazeExplorer: MazeExplorer {
             print("ゴールにたどり着けませんでした")
         }
 
-        return steps
+        return (steps, shortestDistance)
     }
 }

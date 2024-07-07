@@ -9,7 +9,7 @@ import Foundation
 
 class DFSMazeExplorer: MazeExplorer {
     
-    func exploreMaze(maze: [[MazeCellState]], start: (Int, Int)) -> [[[ExplorationState]]] {
+    func exploreMaze(maze: [[MazeCellState]], start: (Int, Int)) -> (steps: [[[ExplorationState]]], shortestDistance: Int?) {
         var currentStates: [[ExplorationState]] = Array(repeating: Array(repeating: .notExplored, count: maze[0].count), count: maze.count)
         var stack: [(Int, Int, Int)] = [(start.0, start.1, 0)]  // (x, y, distance)
         var steps: [[[ExplorationState]]] = []
@@ -20,12 +20,14 @@ class DFSMazeExplorer: MazeExplorer {
         steps.append(currentStates.map { $0 })
         
         var goalPosition: (Int, Int)? = nil
+        var shortestDistance: Int? = nil
         
         while let (x, y, dist) = stack.last {
             if maze[y][x] == .goal {
                 currentStates[y][x] = .goal
                 steps.append(currentStates.map { $0 })
                 goalPosition = (x, y)
+                shortestDistance = dist
                 break
             }
             var moved = false
@@ -42,7 +44,7 @@ class DFSMazeExplorer: MazeExplorer {
                         stack.append((nx, ny, dist + 1))
                         moved = true
                         cameFrom[ny][nx] = (x, y)
-                        steps.append(currentStates.map { $0 })
+                        steps.append(currentStates.map { $0 })  // Update step after modifying currentStates
                         break
                     }
                 }
@@ -77,6 +79,6 @@ class DFSMazeExplorer: MazeExplorer {
             print("ゴールにたどり着けませんでした")
         }
         
-        return steps
+        return (steps, shortestDistance)
     }
 }

@@ -9,9 +9,21 @@ import SwiftUI
 
 struct MazeExplorationView: View {
     let maze: [[ExplorationState]]
+    let shortestDistance: Int?
 
     var body: some View {
         VStack(spacing: 0) {
+            
+            HStack {
+                Text("Shortest Distance:")
+                
+                Spacer()
+                
+                Text("\(shortestDistance != nil ? "\(String(describing: shortestDistance!))" : " ?")")
+            }
+            .padding(.bottom)
+            .padding(.horizontal)
+
             ForEach(maze.indices, id: \.self) { rowIndex in
                 HStack(spacing: 0) {
                     ForEach(maze[rowIndex].indices, id: \.self) { columnIndex in
@@ -27,9 +39,9 @@ struct MazeExplorationView: View {
     private func color(for cell: ExplorationState) -> Color {
         switch cell {
         case .notExplored:
-            return .black
-        case .wall:
             return .gray
+        case .wall:
+            return .black
         case .path:
             return .white
         case .start:
@@ -52,5 +64,5 @@ struct MazeExplorationView: View {
             case .goal: return ExplorationState.goal
             }
         }
-    })
+    }, shortestDistance: nil)
 }
