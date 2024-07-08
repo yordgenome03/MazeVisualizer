@@ -28,7 +28,7 @@ struct MazeGeneratorView: View {
             Section {
                 Picker("", selection: $viewModel.selectedGenerator) {
                     ForEach(viewModel.generatorList, id: \.self) { generator in
-                        Text(generator).tag(generator)
+                        Text(generator.description).tag(generator)
                     }
                 }
                 .pickerStyle(MenuPickerStyle())
@@ -40,9 +40,7 @@ struct MazeGeneratorView: View {
                 MazeVisualizationView(maze: viewModel.maze)
                     .frame(maxWidth: .infinity, alignment: .center)
             }
-            .padding()
-            
-            
+            .padding()            
             
             Section {
                 Button {
@@ -51,6 +49,7 @@ struct MazeGeneratorView: View {
                     }
                 } label: {
                     Text("Generate")
+                        .frame(maxWidth: .infinity, alignment: .center)
                 }
             } header: {
                 Text("Generate Maze")
@@ -61,6 +60,7 @@ struct MazeGeneratorView: View {
                     viewModel.showSaveMazeView.toggle()
                 } label: {
                     Text("Save")
+                        .frame(maxWidth: .infinity, alignment: .center)
                 }
             } header: {
                 Text("Save Maze")

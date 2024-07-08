@@ -10,19 +10,27 @@ import SwiftUI
 struct MazeExplorationView: View {
     let maze: [[ExplorationState]]
     let shortestDistance: Int?
-
+    let showShortestDistance: Bool
+    
+    init(maze: [[ExplorationState]], shortestDistance: Int?, showShortestDistance: Bool = true) {
+        self.maze = maze
+        self.shortestDistance = shortestDistance
+        self.showShortestDistance = showShortestDistance
+    }
+    
     var body: some View {
         VStack(spacing: 0) {
-            
-            HStack {
-                Text("Shortest Distance:")
-                
-                Spacer()
-                
-                Text("\(shortestDistance != nil ? "\(String(describing: shortestDistance!))" : " ?")")
+            if showShortestDistance {
+                HStack {
+                    Text("Shortest Distance:")
+                    
+                    Spacer()
+                    
+                    Text("\(shortestDistance != nil ? "\(String(describing: shortestDistance!))" : " ?")")
+                }
+                .padding(.bottom)
+                .padding(.horizontal)
             }
-            .padding(.bottom)
-            .padding(.horizontal)
 
             ForEach(maze.indices, id: \.self) { rowIndex in
                 HStack(spacing: 0) {

@@ -14,8 +14,8 @@ struct MazeExplorerView: View {
         List {
             Section {
                 Picker("", selection: $viewModel.selectedMazeData) {
-                    ForEach(viewModel.mazeList, id: \.self) { maze in
-                        Text(maze.name).tag(maze.id)
+                    ForEach(viewModel.mazeDataList, id: \.self) { mazeData in
+                        Text(mazeData.name).tag(mazeData.id)
                     }
                 }
                 .pickerStyle(MenuPickerStyle())
@@ -51,15 +51,13 @@ struct MazeExplorerView: View {
                     }
                 } label: {
                     Text("Start Exploration")
+                        .frame(maxWidth: .infinity, alignment: .center)
                 }
             }
         }
         .padding(.bottom, 24)
         .edgesIgnoringSafeArea(.bottom)
         .navigationTitle("Maze Exploration")
-        .onAppear {
-            viewModel.loadSavedMazes()
-        }
     }
 }
 

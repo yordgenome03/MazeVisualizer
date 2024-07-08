@@ -6,10 +6,11 @@
 //
 
 import SwiftUI
+import Combine
 
 @MainActor
 class MazeExplorerViewModel: ObservableObject {
-    @Published var mazeList: [MazeData] = []
+    @Published var mazeDataList: [MazeData] = []
     @Published var selectedMazeData: MazeData = MazeData.default {
         didSet {
             shortestDistance = nil
@@ -22,15 +23,16 @@ class MazeExplorerViewModel: ObservableObject {
     @Published var isExploring = false
     @Published var shortestDistance: Int?
     private var currentTask: Task<Void, Never>?
+    private var cancellables: Set<AnyCancellable> = []
+    
+    private let repository: MazeRepositoryProtocol = MazeRepository.shared
 
     init() {
-        loadSavedMazes()
-    }
-
-    func loadSavedMazes() {
-        mazeList = [MazeData.default]
-        let savedMazes = UserDefaultsService.getAllMazes()
-        mazeList.append(contentsOf: savedMazes)
+        repository.mazeDataListPublisher
+            .sink { [weak self] mazeDataList in
+                self?.mazeDataList = mazeDataList
+            }
+            .store(in: &cancellables)
     }
     
     func exploreMaze() async {

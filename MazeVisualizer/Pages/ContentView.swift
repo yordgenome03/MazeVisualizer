@@ -10,33 +10,17 @@ import SwiftUI
 struct ContentView: View {
     
     var body: some View {
-        NavigationStack {
-            List {
-                Section {
-                    NavigationLink {
-                        MazeGeneratorView()
-                    } label: {
-                        Text("Maze Generation")
-                    }
-                    
-                    NavigationLink {
-                        MazeExplorerView()
-                    } label: {
-                        Text("Maze Exploration")
-                    }
-                    
-                    NavigationLink {
-
-                    } label: {
-                        Text("Maze Shortest Route Search")
-                    }
-                    
-                } header: {
-                    Text("Basics")
+        TabView {
+            NavigationListView()
+                .tabItem {
+                    Image(systemName: "house")
                 }
-                
-            }
-            .navigationTitle("Maze")
+            
+            
+            MazeDataListView()
+                .tabItem {
+                    Image(systemName: "list.star")
+                }
         }
     }
 }

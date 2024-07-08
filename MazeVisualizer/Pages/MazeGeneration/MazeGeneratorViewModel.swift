@@ -7,12 +7,6 @@
 
 import SwiftUI
 
-extension Constants {
-    static let recursiveBacktracking = "Recursive Backtracking"
-    static let growingTree = "Growing Tree"
-    static let binaryTree = "Binary Tree"
-}
-
 @MainActor
 class MazeGeneratorViewModel: ObservableObject {
     @Published var maze: [[MazeCellState]] = []
@@ -29,12 +23,13 @@ class MazeGeneratorViewModel: ObservableObject {
             self.maze = Array(repeating: Array(repeating: .wall, count: width), count: height)
         }
     }
-    let generatorList: [String] = [Constants.recursiveBacktracking,
-                                   Constants.growingTree,
-                                   Constants.binaryTree]
-    @Published var selectedGenerator: String = Constants.recursiveBacktracking
+    let generatorList: [MazeGeneratorType] = MazeGeneratorType.allCases
+    @Published var selectedGenerator: MazeGeneratorType = .recursiveBacktracking
+    private var algorithm: MazeGeneratorType = .recursiveBacktracking
     private var currentTask: Task<Void, Never>?
     
+    private let repository: MazeRepositoryProtocol = MazeRepository.shared
+
     init() {
         self.maze = Array(repeating: Array(repeating: .wall, count: width), count: height)
     }
@@ -42,13 +37,13 @@ class MazeGeneratorViewModel: ObservableObject {
     func generateMaze() async {
         currentTask?.cancel()
         completed = false
-
+        algorithm = selectedGenerator
+        
         let generator: MazeGenerator = {
             switch selectedGenerator {
-            case Constants.recursiveBacktracking: return RecursiveBacktrackingMazeGenerator()
-            case Constants.growingTree: return GrowingTreeMazeGenerator()
-            case Constants.binaryTree: return BinaryTreeMazeGenerator()
-            default: return RecursiveBacktrackingMazeGenerator()
+            case .recursiveBacktracking: return RecursiveBacktrackingMazeGenerator()
+            case .growingTree: return GrowingTreeMazeGenerator()
+            case .binaryTree: return BinaryTreeMazeGenerator()
             }
         }()
         
@@ -69,8 +64,8 @@ class MazeGeneratorViewModel: ObservableObject {
     
     func saveMaze() {
         guard completed && !mazeName.isEmpty else { return }
-        let mazeData = MazeData(name: mazeName, maze: maze)
-        UserDefaultsService.saveMaze(mazeData)
+        let mazeData = MazeData(name: mazeName, maze: maze, algorithm: algorithm.description)
+        repository.saveMaze(mazeData)
     }
 }
 

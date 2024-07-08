@@ -33,7 +33,6 @@ class BinaryTreeMazeGenerator: MazeGenerator {
         
         setStartAndGoal(&maze, width: width, height: height)
         steps.append(maze.map { $0 })
-        
         return steps
     }
     

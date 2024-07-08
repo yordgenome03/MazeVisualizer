@@ -17,3 +17,11 @@ enum MazeCellState: Codable {
     case start
     case goal
 }
+
+enum MazeGeneratorType: String, CustomStringConvertible, CaseIterable {
+    case recursiveBacktracking = "Recursive Backtracking"
+    case growingTree = "Growing Tree"
+    case binaryTree = "Binary Tree"
+    
+    var description: String { self.rawValue }
+}
