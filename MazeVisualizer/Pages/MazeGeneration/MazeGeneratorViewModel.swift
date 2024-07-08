@@ -67,5 +67,10 @@ class MazeGeneratorViewModel: ObservableObject {
         let mazeData = MazeData(name: mazeName, maze: maze, algorithm: algorithm.description)
         repository.saveMaze(mazeData)
     }
+    
+    func makeMazeData() -> MazeData? {
+        guard completed else { return nil }
+        return MazeData(name: "", maze: maze, algorithm: algorithm.description)
+    }
 }
 

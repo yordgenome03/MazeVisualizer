@@ -67,6 +67,13 @@ struct MazeDataDetailView: View {
             }
             
             Section {
+                NavigationLink {
+                    MazeGameView(mazeData: viewModel.mazeData)
+                } label: {
+                    Text("Play Game")
+                        .frame(maxWidth: .infinity, alignment: .center)
+                }
+                
                 Button {
                     viewModel.deleteMazeData()
                     dismiss()

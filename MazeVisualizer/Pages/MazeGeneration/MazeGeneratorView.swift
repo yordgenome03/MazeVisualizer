@@ -55,6 +55,19 @@ struct MazeGeneratorView: View {
                 Text("Generate Maze")
             }
             
+            if viewModel.completed {
+                Section {
+                    NavigationLink {
+                        MazeGameView(mazeData: viewModel.makeMazeData()!)
+                    } label: {
+                        Text("Play")
+                            .frame(maxWidth: .infinity, alignment: .center)
+                    }
+                } header: {
+                    Text("Play Maze Game")
+                }
+            }
+            
             Section {
                 Button {
                     viewModel.showSaveMazeView.toggle()

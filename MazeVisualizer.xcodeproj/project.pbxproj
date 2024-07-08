@@ -36,6 +36,9 @@
 		A1E8C3222C3B1739006C7F85 /* MazeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E8C3212C3B1739006C7F85 /* MazeRepository.swift */; };
 		A1E8C3242C3B27B8006C7F85 /* MazeDataDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E8C3232C3B27B8006C7F85 /* MazeDataDetailView.swift */; };
 		A1E8C3272C3B2AC5006C7F85 /* MazeDataDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E8C3262C3B2AC5006C7F85 /* MazeDataDetailViewModel.swift */; };
+		A1E8C3312C3B6D77006C7F85 /* MazeGameService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E8C3302C3B6D76006C7F85 /* MazeGameService.swift */; };
+		A1E8C3342C3B6EB9006C7F85 /* MazeGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E8C3332C3B6EB9006C7F85 /* MazeGameView.swift */; };
+		A1E8C3362C3B6F03006C7F85 /* MazeGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E8C3352C3B6F03006C7F85 /* MazeGameViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +91,9 @@
 		A1E8C3212C3B1739006C7F85 /* MazeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeRepository.swift; sourceTree = "<group>"; };
 		A1E8C3232C3B27B8006C7F85 /* MazeDataDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeDataDetailView.swift; sourceTree = "<group>"; };
 		A1E8C3262C3B2AC5006C7F85 /* MazeDataDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeDataDetailViewModel.swift; sourceTree = "<group>"; };
+		A1E8C3302C3B6D76006C7F85 /* MazeGameService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeGameService.swift; sourceTree = "<group>"; };
+		A1E8C3332C3B6EB9006C7F85 /* MazeGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeGameView.swift; sourceTree = "<group>"; };
+		A1E8C3352C3B6F03006C7F85 /* MazeGameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeGameViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -199,6 +205,7 @@
 				A1E8C3012C39FF7E006C7F85 /* MazeData.swift */,
 				A1E8C3212C3B1739006C7F85 /* MazeRepository.swift */,
 				A1BAC9712C38937000F96F77 /* UserDefaultsService.swift */,
+				A1E8C3302C3B6D76006C7F85 /* MazeGameService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -207,6 +214,7 @@
 			isa = PBXGroup;
 			children = (
 				A1BAC9772C39E50800F96F77 /* ContentView.swift */,
+				A1E8C3322C3B6EA9006C7F85 /* MazeGame */,
 				A1E8C31B2C3B13CC006C7F85 /* NavigationList */,
 				A1BAC9792C39F3B500F96F77 /* MazeGeneration */,
 				A1BAC9802C39FB2700F96F77 /* MazeExploration */,
@@ -295,6 +303,15 @@
 				A1BAC9442C3891AD00F96F77 /* MazeVisualizerApp.swift */,
 			);
 			path = App;
+			sourceTree = "<group>";
+		};
+		A1E8C3322C3B6EA9006C7F85 /* MazeGame */ = {
+			isa = PBXGroup;
+			children = (
+				A1E8C3352C3B6F03006C7F85 /* MazeGameViewModel.swift */,
+				A1E8C3332C3B6EB9006C7F85 /* MazeGameView.swift */,
+			);
+			path = MazeGame;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -430,6 +447,7 @@
 				A1E8C3242C3B27B8006C7F85 /* MazeDataDetailView.swift in Sources */,
 				A1E8C31A2C3B12C1006C7F85 /* MazeDataListView.swift in Sources */,
 				A1E8C3182C3B1071006C7F85 /* BinaryTreeMazeGenerator.swift in Sources */,
+				A1E8C3312C3B6D77006C7F85 /* MazeGameService.swift in Sources */,
 				A1BAC9472C3891AD00F96F77 /* MazeGeneratorView.swift in Sources */,
 				A1BAC9702C3891DB00F96F77 /* RecursiveBacktrackingMazeGenerator.swift in Sources */,
 				A1E8C3222C3B1739006C7F85 /* MazeRepository.swift in Sources */,
@@ -439,7 +457,9 @@
 				A1E8C3022C39FF7E006C7F85 /* MazeData.swift in Sources */,
 				A1E8C3102C3A808C006C7F85 /* MazeVisualizationView.swift in Sources */,
 				A1E8C3092C3A4907006C7F85 /* BFSMazeExplorer.swift in Sources */,
+				A1E8C3362C3B6F03006C7F85 /* MazeGameViewModel.swift in Sources */,
 				A1BAC9762C39E4E300F96F77 /* MazeGeneratorViewModel.swift in Sources */,
+				A1E8C3342C3B6EB9006C7F85 /* MazeGameView.swift in Sources */,
 				A1E8C3202C3B1465006C7F85 /* MazeDataListViewModel.swift in Sources */,
 				A1BAC97C2C39F5CA00F96F77 /* MazeGenerator.swift in Sources */,
 				A1E8C3162C3B0950006C7F85 /* GrowingTreeMazeGenerator.swift in Sources */,
