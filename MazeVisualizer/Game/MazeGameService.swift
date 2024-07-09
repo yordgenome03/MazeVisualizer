@@ -7,40 +7,6 @@
 
 import Foundation
 
-enum Direction {
-    case up, down, left, right
-}
-
-struct Player {
-    var position: (x: Int, y: Int)
-    var direction: Direction
-    
-    mutating func move(toDirection direction: Direction, inMaze maze: [[MazeCellState]]) {
-        self.direction = direction
-        
-        var newPosition = position
-        
-        switch direction {
-        case .up:
-            newPosition.y -= 1
-        case .down:
-            newPosition.y += 1
-        case .left:
-            newPosition.x -= 1
-        case .right:
-            newPosition.x += 1
-        }
-        
-        if newPosition.y >= 0
-            && newPosition.y < maze.count
-            && newPosition.x >= 0
-            && newPosition.x < maze[0].count
-            && maze[newPosition.y][newPosition.x] != .wall {
-            position = newPosition
-        }
-    }
-}
-
 class MazeGameService {
     private let mazeData: MazeData
     private(set) var exploredMaze: [[ExplorationState]]
@@ -53,13 +19,11 @@ class MazeGameService {
         self.mazeData = mazeData
         self.exploredMaze = Array(repeating: Array(repeating: .notExplored, count: mazeData.maze[0].count), count: mazeData.maze.count)
         self.exploredMaze[playerStartPosition.y][playerStartPosition.x] = .start
-        self.player = Player(position: playerStartPosition, direction: playerDirection)
+        self.player = Player(position: playerStartPosition, direction: playerDirection, maze: mazeData.maze)
         exploreVisibleArea()
     }
     
-    private func exploreVisibleArea() {
-        let (x, y) = player.position
-                
+    private func exploreVisibleArea() {                
         let frontPositions = getFrontPositions()
         
         for (index, pos) in frontPositions.enumerated() {
@@ -124,8 +88,10 @@ class MazeGameService {
     }
     
     func movePlayer(toDirection direction: Direction) -> (player: Player, exploredMaze: [[ExplorationState]]) {
-        guard !completed else { return (player, exploredMaze) }
-        player.move(toDirection: direction, inMaze: mazeData.maze)
+        guard !completed else { 
+            return (player, exploredMaze)
+        }
+        player = player.move(toDirection: direction)
         if mazeData.maze[player.position.y][player.position.x] == .goal {
             completed = true
         }

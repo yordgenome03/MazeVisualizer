@@ -15,69 +15,78 @@ struct MazeGameView: View {
     }
     
     var body: some View {
-        VStack {
-            GameView
+        VStack {                
+            Text(viewModel.aaImage)
+                .font(.caption2.bold())
                 .frame(maxWidth: .infinity, alignment: .center)
-            
-            ZStack {
-                Button {
-                    viewModel.movePlayer(toDirection: .up)
-                } label: {
-                    Image(systemName: "chevron.up")
-                        .frame(width: 40, height: 40)
-                        .background(
-                            Circle()
-                                .fill(Color.yellow)
-                        )
-                }
-                .frame(maxWidth: .infinity,  alignment: .center)
                 .frame(maxHeight: .infinity, alignment: .top)
-                Button {
-                    viewModel.movePlayer(toDirection: .down)
-                } label: {
-                    Image(systemName: "chevron.down")
-                        .frame(width: 40, height: 40)
-                        .background(
-                            Circle()
-                                .fill(Color.yellow)
-                        )
+                .padding(.top, 80)
+                .overlay { 
+                    GameView
+                        .scaleEffect(0.8)
+                        .opacity(0.7)
+                        .frame(maxWidth: .infinity, alignment: .trailing)
+                        .frame(maxHeight: .infinity, alignment: .top)
+                        .offset(y: -20)
                 }
-                .frame(maxWidth: .infinity,  alignment: .center)
-                .frame(maxHeight: .infinity, alignment: .bottom)
-                
+                .fixedSize(horizontal: false, vertical: true)
+            
+            HStack(spacing: 10) {
                 Button {
                     viewModel.movePlayer(toDirection: .left)
                 } label: {
                     Image(systemName: "chevron.left")
-                        .frame(width: 40, height: 40)
+                        .frame(width: 60, height: 90)
                         .background(
-                            Circle()
+                            Rectangle()
                                 .fill(Color.yellow)
                         )
                 }
-                .frame(maxWidth: .infinity,  alignment: .leading)
-                .frame(maxHeight: .infinity, alignment: .center)
+                
+                VStack(spacing: 10) {
+                    Button {
+                        viewModel.movePlayer(toDirection: .up)
+                    } label: {
+                        Image(systemName: "chevron.up")
+                            .frame(width: 140, height: 40)
+                            .background(
+                                Rectangle()
+                                    .fill(Color.yellow)
+                            )
+                    }
+                    
+                    Button {
+                        viewModel.movePlayer(toDirection: .down)
+                    } label: {
+                        Image(systemName: "chevron.down")
+                            .frame(width: 140, height: 40)
+                            .background(
+                                Rectangle()
+                                    .fill(Color.yellow)
+                            )
+                    }
+                }
                 
                 Button {
                     viewModel.movePlayer(toDirection: .right)
                 } label: {
                     Image(systemName: "chevron.right")
-                        .frame(width: 40, height: 40)
+                        .frame(width: 60, height: 90)
                         .background(
-                            Circle()
+                            Rectangle()
                                 .fill(Color.yellow)
-                                .frame(width: 40, height: 40)
                         )
                 }
-                .frame(maxWidth: .infinity,  alignment: .trailing)
-                .frame(maxHeight: .infinity, alignment: .center)
             }
-            .frame(width: 180, height: 100)
+            .frame(maxHeight: .infinity, alignment: .center)
             
+            Button("Reset Game") {
+                viewModel.resetGame()
+            }
+            .padding()
             Spacer()
         }
         .navigationTitle(viewModel.mazeData.name)
-
     }
     
     private var GameView: some View {
@@ -95,7 +104,7 @@ struct MazeGameView: View {
                                     .scaledToFit()
                                     .frame(width: 10, height: 10)
                                     .rotationEffect(angleForDirection(viewModel.player.direction))
-                                    .foregroundColor(.black)
+                                    .foregroundColor(.blue)
                             }
                         }
                     }
@@ -108,9 +117,9 @@ struct MazeGameView: View {
     private func colorForState(_ state: ExplorationState) -> Color {
         switch state {
         case .notExplored:
-            return .gray
+            return .clear
         case .path:
-            return .white
+            return .gray.opacity(0.2)
         case .wall:
             return .black
         case .start:

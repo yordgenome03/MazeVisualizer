@@ -12,6 +12,9 @@ struct MazeVisualizerApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .onAppear {
+
+                }
         }
     }
 }
