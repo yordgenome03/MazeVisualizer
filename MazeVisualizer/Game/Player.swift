@@ -80,16 +80,58 @@ struct Player {
     func cellWallConfiguration(at x: Int, y: Int) -> CellWallConfiguration {
         let newX = position.x + x
         let newY = position.y + y
+        let top: WallState = {
+            if newY > 0 && newY < maze.count - 1{
+                switch maze[newY - 1][newX] {
+                case .wall:  return .wall
+                case .goal, .start: return .door
+                case .path: return .open
+                }
+            } else {
+                return .wall
+            }
+        }()
         
-        let top = (newY > 0) ? maze[newY - 1][newX] == .wall : true
-        let bottom = (newY < maze.count - 1) ? maze[newY + 1][newX] == .wall : true
-        let left = (newX > 0) ? maze[newY][newX - 1] == .wall : true
-        let right = (newX < maze[newY].count - 1) ? maze[newY][newX + 1] == .wall : true
+        let bottom: WallState = {
+            if newY > 0 && newY < maze.count - 1 {
+                switch maze[newY + 1][newX] {
+                case .wall: return .wall
+                case .goal, .start: return .door
+                case .path: return .open
+                }
+            } else {
+                return .wall
+            }
+        }()
         
-        return CellWallConfiguration(top: top ? .wall : .open,
-                                     left: left ? .wall : .open,
-                                     bottom: bottom ? .wall : .open,
-                                     right: right ? .wall : .open)
+        let left: WallState = {
+            if newX > 0 && newX < maze[newY].count - 1 {
+                switch maze[newY][newX - 1] {
+                case .wall: return .wall
+                case .goal, .start: return .door
+                case .path: return .open
+                }
+            } else {
+                return .wall
+            }
+        }()
+        
+        let right: WallState = {
+            if newX > 0 && newX < maze[newY].count - 1 {
+                switch maze[newY][newX + 1] {
+                case .wall: return .wall
+                case .goal, .start: return .door
+                case .path: return .open
+                }
+            } else {
+                return .wall
+            }
+        }()        
+        
+        return CellWallConfiguration(top: top,
+                                     left: left,
+                                     bottom: bottom,
+                                     right: right)
     }
     
     var sightWallConfigurations: [CellWallConfiguration] {
