@@ -39,8 +39,12 @@ struct Player {
         }
         return Player(position: position, direction: newDirection, maze: maze)
     }
-
-    var relativeCoordinates: [(x: Int, y: Int)] {        
+    
+    func changeDirection(to newDirection: Direction) -> Player {
+        Player(position: position, direction: newDirection, maze: maze)
+    }
+    
+    var relativeSightCoordinates: [(x: Int, y: Int)] {        
         switch self.direction {
         case .up:
             return [
@@ -64,7 +68,7 @@ struct Player {
                 (-3, 1), (-3, -1), (-3, 0),
                 (-2, 1), (-2, -1), (-2, 0),
                 (-1, 1), (-1, -1), (-1, 0),
-                (0, 1), (-0, -1), (-0, 0),
+                (0, 1), (0, -1), (0, 0),
             ]
         case .right:
             return [
@@ -81,7 +85,7 @@ struct Player {
         let newX = position.x + x
         let newY = position.y + y
         let top: WallState = {
-            if newY > 0 && newY < maze.count - 1{
+            if newY > 0 && newY <= maze.count - 1{
                 switch maze[newY - 1][newX] {
                 case .wall:  return .wall
                 case .goal, .start: return .door
@@ -93,7 +97,7 @@ struct Player {
         }()
         
         let bottom: WallState = {
-            if newY > 0 && newY < maze.count - 1 {
+            if newY >= 0 && newY < maze.count - 1 {
                 switch maze[newY + 1][newX] {
                 case .wall: return .wall
                 case .goal, .start: return .door
@@ -105,7 +109,7 @@ struct Player {
         }()
         
         let left: WallState = {
-            if newX > 0 && newX < maze[newY].count - 1 {
+            if newX > 0 && newX <= maze[newY].count - 1 {
                 switch maze[newY][newX - 1] {
                 case .wall: return .wall
                 case .goal, .start: return .door
@@ -117,7 +121,7 @@ struct Player {
         }()
         
         let right: WallState = {
-            if newX > 0 && newX < maze[newY].count - 1 {
+            if newX >= 0 && newX < maze[newY].count - 1 {
                 switch maze[newY][newX + 1] {
                 case .wall: return .wall
                 case .goal, .start: return .door
@@ -135,7 +139,7 @@ struct Player {
     }
     
     var sightWallConfigurations: [CellWallConfiguration] {
-        return relativeCoordinates.compactMap { x, y in
+        return relativeSightCoordinates.compactMap { x, y in
             let newX = position.x + x
             let newY = position.y + y
             if newY >= 0, newY < maze.count, newX >= 0, newX < maze[newY].count {

@@ -103,6 +103,7 @@ struct MazeGameView: View {
                                     .resizable()
                                     .scaledToFit()
                                     .frame(width: 10, height: 10)
+                                    .scaleEffect(x: 0.6)
                                     .rotationEffect(angleForDirection(viewModel.player.direction))
                                     .foregroundColor(.blue)
                             }

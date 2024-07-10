@@ -32,40 +32,47 @@ class MazeGameViewModel: ObservableObject {
     }
     
     func movePlayer(toDirection direction: Direction) {
-        let currentDirection = self.player.direction
         var modifiedDirection: Direction
 
-        switch currentDirection {
-        case .up:
-            modifiedDirection = direction
-        case .down:
-            switch direction {
-            case .up: modifiedDirection = .down
-            case .down: modifiedDirection = .up
-            case .left: modifiedDirection = .right
-            case .right: modifiedDirection = .left
+        if case .up = direction {
+            let (player, exploredMaze) = gameService.movePlayer(toDirection: player.direction)
+            withAnimation {
+                self.player = player
+                self.exploredMaze = exploredMaze
             }
-        case .left:
-            switch direction {
-            case .up: modifiedDirection = .left
-            case .down: modifiedDirection = .right
-            case .left: modifiedDirection = .down
-            case .right: modifiedDirection = .up
+            self.aaImage = aaManager.generateAAImage(player: player)
+        } else {
+            switch player.direction {
+            case .up:
+                modifiedDirection = direction    
+            case .down:
+                switch direction {
+                case .up: modifiedDirection = .down
+                case .down: modifiedDirection = .up
+                case .left: modifiedDirection = .right
+                case .right: modifiedDirection = .left
+                }
+            case .left:
+                switch direction {
+                case .up: modifiedDirection = .left
+                case .down: modifiedDirection = .right
+                case .left: modifiedDirection = .down
+                case .right: modifiedDirection = .up
+                }
+            case.right:
+                switch direction {
+                case .up: modifiedDirection = .right
+                case .down: modifiedDirection = .left
+                case .left: modifiedDirection = .up
+                case .right: modifiedDirection = .down
+                }
             }
-        case.right:
-            switch direction {
-            case .up: modifiedDirection = .right
-            case .down: modifiedDirection = .left
-            case .left: modifiedDirection = .up
-            case .right: modifiedDirection = .down
+            let (player, exploredMaze) = gameService.changePlayerDirection(to: modifiedDirection)
+            withAnimation {
+                self.player = player
+                self.exploredMaze = exploredMaze
             }
+            self.aaImage = aaManager.generateAAImage(player: player)
         }
-        
-        let (player, exploredMaze) = gameService.movePlayer(toDirection: modifiedDirection)
-        withAnimation {
-            self.player = player
-            self.exploredMaze = exploredMaze
-        }
-        self.aaImage = aaManager.generateAAImage(player: player)
     }
 }

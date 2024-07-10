@@ -98,4 +98,13 @@ class MazeGameService {
         exploreVisibleArea()
         return (player, exploredMaze)
     }
+    
+    func changePlayerDirection(to direction: Direction) -> (player: Player, exploredMaze: [[ExplorationState]]) {
+        guard !completed else { 
+            return (player, exploredMaze)
+        }
+        player = player.changeDirection(to: direction)
+        exploreVisibleArea()
+        return (player, exploredMaze)
+    }
 }
