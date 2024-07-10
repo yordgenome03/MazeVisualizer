@@ -30,6 +30,10 @@ struct MazeGameView: View {
                         .offset(y: -20)
                 }
                 .fixedSize(horizontal: false, vertical: true)
+                .background(
+                RoundedRectangle(cornerRadius: 8)
+                    .stroke(Color.black, lineWidth: 4)
+                )
             
             HStack(spacing: 10) {
                 Button {
@@ -47,12 +51,16 @@ struct MazeGameView: View {
                     Button {
                         viewModel.movePlayer(toDirection: .up)
                     } label: {
-                        Image(systemName: "chevron.up")
-                            .frame(width: 140, height: 40)
-                            .background(
-                                Rectangle()
-                                    .fill(Color.yellow)
-                            )
+                        VStack(spacing: 0) {
+                            Image(systemName: "chevron.up")
+                            Image(systemName: "chevron.up")
+                        }
+                        .frame(width: 140, height: 40)
+                        
+                        .background(
+                            Rectangle()
+                                .fill(Color.yellow)
+                        )
                     }
                     
                     Button {

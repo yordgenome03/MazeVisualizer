@@ -91,7 +91,7 @@ class MazeGameService {
         guard !completed else { 
             return (player, exploredMaze)
         }
-        player = player.move(toDirection: direction)
+        player.move(toDirection: direction)
         if mazeData.maze[player.position.y][player.position.x] == .goal {
             completed = true
         }
@@ -103,7 +103,7 @@ class MazeGameService {
         guard !completed else { 
             return (player, exploredMaze)
         }
-        player = player.changeDirection(to: direction)
+        player.changeDirection(to: direction)
         exploreVisibleArea()
         return (player, exploredMaze)
     }
