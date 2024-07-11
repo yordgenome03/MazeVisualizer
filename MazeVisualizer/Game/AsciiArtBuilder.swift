@@ -18,16 +18,40 @@ struct CellWallConfiguration: Equatable {
     var left: WallState
     var bottom: WallState
     var right: WallState
+    
+    mutating func rotate(to direction: Direction) {
+        let defaultTop = top
+        let defaultLeft = left
+        let defaultBottom = bottom
+        let defaultRight = right
+        
+        switch direction {
+        case .up:
+            break
+        case .left:
+            top = defaultLeft
+            left = defaultBottom
+            bottom = defaultRight
+            right = defaultTop
+        case .down:
+            top = defaultBottom
+            left = defaultRight
+            bottom = defaultTop
+            right = defaultLeft
+        case .right:
+            top = defaultRight
+            left = defaultTop
+            bottom = defaultLeft
+            right = defaultBottom
+        }
+    }
 }
 
-fileprivate extension Player {
-    
+extension [[MazeCellState]] {
     func cellWallConfiguration(at x: Int, y: Int) -> CellWallConfiguration {
-        let newX = position.x + x
-        let newY = position.y + y
         let top: WallState = {
-            if newY > 0 && newY <= maze.count - 1{
-                switch maze[newY - 1][newX] {
+            if y > 0 && y <= self.count - 1 {
+                switch self[y - 1][x] {
                 case .wall:  return .wall
                 case .goal, .start: return .door
                 case .path: return .open
@@ -38,8 +62,8 @@ fileprivate extension Player {
         }()
         
         let bottom: WallState = {
-            if newY >= 0 && newY < maze.count - 1 {
-                switch maze[newY + 1][newX] {
+            if y >= 0 && y < self.count - 1 {
+                switch self[y + 1][x] {
                 case .wall: return .wall
                 case .goal, .start: return .door
                 case .path: return .open
@@ -50,8 +74,8 @@ fileprivate extension Player {
         }()
         
         let left: WallState = {
-            if newX > 0 && newX <= maze[newY].count - 1 {
-                switch maze[newY][newX - 1] {
+            if x > 0 && x <= self[y].count - 1 {
+                switch self[y][x - 1] {
                 case .wall: return .wall
                 case .goal, .start: return .door
                 case .path: return .open
@@ -62,8 +86,8 @@ fileprivate extension Player {
         }()
         
         let right: WallState = {
-            if newX >= 0 && newX < maze[newY].count - 1 {
-                switch maze[newY][newX + 1] {
+            if x >= 0 && x < self[y].count - 1 {
+                switch self[y][x + 1] {
                 case .wall: return .wall
                 case .goal, .start: return .door
                 case .path: return .open
@@ -78,56 +102,47 @@ fileprivate extension Player {
                                      bottom: bottom,
                                      right: right)
     }
-    
+}
+
+extension Player {
     var sightWallConfigurations: [CellWallConfiguration] {
         return relativeSightCoordinates.compactMap { x, y in
             let newX = position.x + x
             let newY = position.y + y
             if newY >= 0, newY < maze.count, newX >= 0, newX < maze[newY].count {
-                return rotateCellWallConfiguration(cellWallConfiguration(at: x, y: y), to: direction)
+                var config = maze.cellWallConfiguration(at: newX, y: newY)
+                config.rotate(to: direction)
+                return config
             } else {
                 return CellWallConfiguration(top: .wall, left: .wall, bottom: .wall, right: .wall)
             }
         }
     }
-    
-    func rotateCellWallConfiguration(_ config: CellWallConfiguration, to direction: Direction) -> CellWallConfiguration {
-        switch direction {
-        case .up:
-            return config
-        case .left:
-            return CellWallConfiguration(top: config.left, left: config.bottom, bottom: config.right, right: config.top)
-        case .down:
-            return CellWallConfiguration(top: config.bottom, left: config.right, bottom: config.top, right: config.left)
-        case .right:
-            return CellWallConfiguration(top: config.right, left: config.top, bottom: config.left, right: config.bottom)
-        }
-    }
 }
 
-class AsciiArtBuilder {
+struct AsciiArtBuilder {
     
-    let aaTable: [([String]?, [String]?, [String]?, [String]?)] = [
-        (nil, nil, AsciiArts.Zero.two, nil), (nil, nil, AsciiArts.One.two, nil), (nil, nil, AsciiArts.Two.two, nil),
-        (AsciiArts.Three.zero, nil, AsciiArts.Three.two, AsciiArts.Three.three), (AsciiArts.Four.zero, AsciiArts.Four.one, AsciiArts.Four.two, nil), (AsciiArts.Five.zero, AsciiArts.Five.one, AsciiArts.Five.two, AsciiArts.Five.three),
-        (AsciiArts.Six.zero, nil, AsciiArts.Six.two, AsciiArts.Six.three), (AsciiArts.Seven.zero, AsciiArts.Seven.one, AsciiArts.Seven.two, nil), (AsciiArts.Eight.zero, AsciiArts.Eight.one, AsciiArts.Eight.two, AsciiArts.Eight.three),
-        (AsciiArts.Nine.zero, nil, AsciiArts.Nine.two, AsciiArts.Nine.three), (AsciiArts.Ten.zero, AsciiArts.Ten.one, AsciiArts.Ten.two, nil), (AsciiArts.Eleven.zero, AsciiArts.Eleven.one, AsciiArts.Eleven.two, AsciiArts.Eleven.three),
-        (AsciiArts.Twelve.zero, nil, nil, AsciiArts.Twelve.three), (AsciiArts.Thirteen.zero, AsciiArts.Thirteen.one, nil, nil), (AsciiArts.Fourteen.zero, AsciiArts.Fourteen.one, nil, AsciiArts.Fourteen.three),
+    let aaWallTable: [([String]?, [String]?, [String]?, [String]?)] = [
+        (nil, nil, AsciiArt.Zero.two, nil), (nil, nil, AsciiArt.One.two, nil), (nil, nil, AsciiArt.Two.two, nil),
+        (AsciiArt.Three.zero, nil, AsciiArt.Three.two, AsciiArt.Three.three), (AsciiArt.Four.zero, AsciiArt.Four.one, AsciiArt.Four.two, nil), (AsciiArt.Five.zero, AsciiArt.Five.one, AsciiArt.Five.two, AsciiArt.Five.three),
+        (AsciiArt.Six.zero, nil, AsciiArt.Six.two, AsciiArt.Six.three), (AsciiArt.Seven.zero, AsciiArt.Seven.one, AsciiArt.Seven.two, nil), (AsciiArt.Eight.zero, AsciiArt.Eight.one, AsciiArt.Eight.two, AsciiArt.Eight.three),
+        (AsciiArt.Nine.zero, nil, AsciiArt.Nine.two, AsciiArt.Nine.three), (AsciiArt.Ten.zero, AsciiArt.Ten.one, AsciiArt.Ten.two, nil), (AsciiArt.Eleven.zero, AsciiArt.Eleven.one, AsciiArt.Eleven.two, AsciiArt.Eleven.three),
+        (AsciiArt.Twelve.zero, nil, nil, AsciiArt.Twelve.three), (AsciiArt.Thirteen.zero, AsciiArt.Thirteen.one, nil, nil), (AsciiArt.Fourteen.zero, AsciiArt.Fourteen.one, nil, AsciiArt.Fourteen.three),
     ]
     
     let aaDoorTable: [([String]?, [String]?, [String]?, [String]?)] = [
-        (nil, nil, AsciiArts.Zero.twoD, nil), (nil, nil, AsciiArts.One.twoD, nil), (nil, nil, AsciiArts.Two.twoD, nil),
-        (AsciiArts.Three.zeroD, nil, AsciiArts.Three.twoD, AsciiArts.Three.threeD), (AsciiArts.Four.zeroD, AsciiArts.Four.oneD, AsciiArts.Four.twoD, nil), (AsciiArts.Five.zeroD, AsciiArts.Five.oneD, AsciiArts.Five.twoD, AsciiArts.Five.threeD),
-        (AsciiArts.Six.zeroD, nil, AsciiArts.Six.twoD, AsciiArts.Six.threeD), (AsciiArts.Seven.zeroD, AsciiArts.Seven.oneD, AsciiArts.Seven.twoD, nil), (AsciiArts.Eight.zeroD, AsciiArts.Eight.oneD, AsciiArts.Eight.twoD, AsciiArts.Eight.threeD),
-        (AsciiArts.Nine.zeroD, nil, AsciiArts.Nine.twoD, AsciiArts.Nine.threeD), (AsciiArts.Ten.zeroD, AsciiArts.Ten.oneD, AsciiArts.Ten.twoD, nil), (AsciiArts.Eleven.zeroD, AsciiArts.Eleven.oneD, AsciiArts.Eleven.twoD, AsciiArts.Eleven.threeD),
-        (AsciiArts.Twelve.zeroD, nil, nil, AsciiArts.Twelve.threeD), (AsciiArts.Thirteen.zeroD, AsciiArts.Thirteen.oneD, nil, nil), (AsciiArts.Fourteen.zeroD, AsciiArts.Fourteen.oneD, nil, AsciiArts.Fourteen.threeD),
+        (nil, nil, AsciiArt.Zero.twoD, nil), (nil, nil, AsciiArt.One.twoD, nil), (nil, nil, AsciiArt.Two.twoD, nil),
+        (AsciiArt.Three.zeroD, nil, AsciiArt.Three.twoD, AsciiArt.Three.threeD), (AsciiArt.Four.zeroD, AsciiArt.Four.oneD, AsciiArt.Four.twoD, nil), (AsciiArt.Five.zeroD, AsciiArt.Five.oneD, AsciiArt.Five.twoD, AsciiArt.Five.threeD),
+        (AsciiArt.Six.zeroD, nil, AsciiArt.Six.twoD, AsciiArt.Six.threeD), (AsciiArt.Seven.zeroD, AsciiArt.Seven.oneD, AsciiArt.Seven.twoD, nil), (AsciiArt.Eight.zeroD, AsciiArt.Eight.oneD, AsciiArt.Eight.twoD, AsciiArt.Eight.threeD),
+        (AsciiArt.Nine.zeroD, nil, AsciiArt.Nine.twoD, AsciiArt.Nine.threeD), (AsciiArt.Ten.zeroD, AsciiArt.Ten.oneD, AsciiArt.Ten.twoD, nil), (AsciiArt.Eleven.zeroD, AsciiArt.Eleven.oneD, AsciiArt.Eleven.twoD, AsciiArt.Eleven.threeD),
+        (AsciiArt.Twelve.zeroD, nil, nil, AsciiArt.Twelve.threeD), (AsciiArt.Thirteen.zeroD, AsciiArt.Thirteen.oneD, nil, nil), (AsciiArt.Fourteen.zeroD, AsciiArt.Fourteen.oneD, nil, AsciiArt.Fourteen.threeD),
     ]
     
-    func generateAAImage(player: Player) -> String {
-        var resultAA = AsciiArts.emptyArt
+    func buildAAImage(forConfiguration configuration: [CellWallConfiguration]) -> String {
+        var resultAA = AsciiArt.empty
         
-        for (index, cellWallConfig) in player.sightWallConfigurations.enumerated() {
-            let aaConfig = aaTable[index]
+        for (index, cellWallConfig) in configuration.enumerated() {
+            let aaConfig = aaWallTable[index]
             let aaDoorConfig = aaDoorTable[index]
             
             if case .wall = cellWallConfig.top {
@@ -159,7 +174,7 @@ class AsciiArtBuilder {
                     resultAA = overlay(base: resultAA, overlay: right)
                 } 
             }
-
+            
             if case .wall = cellWallConfig.bottom {
                 if let bottom = aaConfig.2 {
                     resultAA = overlay(base: resultAA, overlay: bottom)

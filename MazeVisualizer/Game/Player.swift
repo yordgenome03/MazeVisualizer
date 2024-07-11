@@ -14,7 +14,7 @@ enum Direction: CaseIterable {
 struct Player {
     var position: (x: Int, y: Int)
     var direction: Direction
-    var maze: [[MazeCellState]]
+    let maze: [[MazeCellState]]
     
     mutating func move(toDirection newDirection: Direction) {
         direction = newDirection
@@ -32,10 +32,10 @@ struct Player {
         }
         
         guard newPosition.y >= 0
-            && newPosition.y < maze.count
-            && newPosition.x >= 0
-            && newPosition.x < maze[0].count
-            && maze[newPosition.y][newPosition.x] != .wall  else {
+                && newPosition.y < maze.count
+                && newPosition.x >= 0
+                && newPosition.x < maze[0].count
+                && maze[newPosition.y][newPosition.x] != .wall  else {
             return
         }
         position = newPosition

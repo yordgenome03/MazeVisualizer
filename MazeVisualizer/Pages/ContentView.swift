@@ -11,15 +11,14 @@ struct ContentView: View {
     
     var body: some View {
         TabView {
-            NavigationListView()
-                .tabItem {
-                    Image(systemName: "house")
-                }
-            
-            
             MazeDataListView()
                 .tabItem {
                     Image(systemName: "list.star")
+                }
+            
+            NavigationListView()
+                .tabItem {
+                    Image(systemName: "house")
                 }
         }
     }

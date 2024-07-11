@@ -10,8 +10,8 @@ import SwiftUI
 struct MazeGameView: View {
     @StateObject private var viewModel: MazeGameViewModel
     
-    init(mazeData: MazeData) {
-        self._viewModel = StateObject(wrappedValue: .init(mazeData: mazeData))
+    init(maze: [[MazeCellState]]) {
+        self._viewModel = StateObject(wrappedValue: .init(maze: maze))
     }
     
     var body: some View {
@@ -30,26 +30,34 @@ struct MazeGameView: View {
                         .offset(y: -20)
                 }
                 .fixedSize(horizontal: false, vertical: true)
-                .background(
-                RoundedRectangle(cornerRadius: 8)
-                    .stroke(Color.black, lineWidth: 4)
-                )
+                .overlay { 
+                    if viewModel.completed {
+                        Text("Game Clear")
+                            .font(.title.bold())
+                            .foregroundStyle(Color.white)
+                            .padding()
+                            .background(
+                                RoundedRectangle(cornerRadius: 8)
+                                    .fill(Color.yellow)
+                            )
+                    }
+                }
             
             HStack(spacing: 10) {
                 Button {
-                    viewModel.movePlayer(toDirection: .left)
+                    viewModel.handlePlayerMovement(fromDirection: .left)
                 } label: {
                     Image(systemName: "chevron.left")
                         .frame(width: 60, height: 90)
                         .background(
                             Rectangle()
-                                .fill(Color.yellow)
+                                .fill(Color.mint)
                         )
                 }
                 
                 VStack(spacing: 10) {
                     Button {
-                        viewModel.movePlayer(toDirection: .up)
+                        viewModel.handlePlayerMovement(fromDirection: .up)
                     } label: {
                         VStack(spacing: 0) {
                             Image(systemName: "chevron.up")
@@ -59,42 +67,49 @@ struct MazeGameView: View {
                         
                         .background(
                             Rectangle()
-                                .fill(Color.yellow)
+                                .fill(Color.mint)
                         )
                     }
                     
                     Button {
-                        viewModel.movePlayer(toDirection: .down)
+                        viewModel.handlePlayerMovement(fromDirection: .down)
                     } label: {
                         Image(systemName: "chevron.down")
                             .frame(width: 140, height: 40)
                             .background(
                                 Rectangle()
-                                    .fill(Color.yellow)
+                                    .fill(Color.mint)
                             )
                     }
                 }
                 
                 Button {
-                    viewModel.movePlayer(toDirection: .right)
+                    viewModel.handlePlayerMovement(fromDirection: .right)
                 } label: {
                     Image(systemName: "chevron.right")
                         .frame(width: 60, height: 90)
                         .background(
                             Rectangle()
-                                .fill(Color.yellow)
+                                .fill(Color.mint)
                         )
                 }
             }
             .frame(maxHeight: .infinity, alignment: .center)
             
-            Button("Reset Game") {
+            Button {
                 viewModel.resetGame()
+            } label: {
+                Text("Reset")
+                    .foregroundStyle(Color.red)
+                    .padding(.horizontal)
+                    .padding()
+                    .background(
+                        RoundedRectangle(cornerRadius: 16)
+                            .stroke(Color.red, lineWidth: 2)
+                    )
             }
-            .padding()
-            Spacer()
+            .padding()            
         }
-        .navigationTitle(viewModel.mazeData.name)
     }
     
     private var GameView: some View {
@@ -123,7 +138,7 @@ struct MazeGameView: View {
         
     }
     
-    private func colorForState(_ state: ExplorationState) -> Color {
+    private func colorForState(_ state: MazeCellExplorationState) -> Color {
         switch state {
         case .notExplored:
             return .clear
@@ -135,8 +150,6 @@ struct MazeGameView: View {
             return .green
         case .goal:
             return .red
-        case .shortestPath:
-            return .blue
         }
     }
     
@@ -156,6 +169,6 @@ struct MazeGameView: View {
 
 #Preview {
     NavigationStack {
-        MazeGameView(mazeData: MazeData.default)
+        MazeGameView(maze: MazeData.default.maze)
     }
 }

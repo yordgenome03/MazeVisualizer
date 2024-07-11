@@ -8,39 +8,34 @@
 import SwiftUI
 
 class MazeGameViewModel: ObservableObject {
-    let mazeData: MazeData
-    @Published var exploredMaze: [[ExplorationState]] = []
-    @Published var player: Player
-    @Published var aaImage: String = AsciiArts.emptyArt.joined(separator: "\n")
+    let maze: [[MazeCellState]]
+    @Published var exploredMaze: [[MazeCellExplorationState]] = []
+    @Published var player: Player = Player(position: (1, 0), direction: .down, maze: [])
+    @Published var aaImage: String = AsciiArt.empty.joined(separator: "\n")
+    @Published var completed = false
+    private let gameManager: MazeGameManager
     
-    private var gameService: MazeGameService
-    let aaManager = AsciiArtBuilder()
-    
-    init(mazeData: MazeData) {
-        self.mazeData = mazeData
-        self.gameService = MazeGameService(mazeData: mazeData)
-        self.exploredMaze = gameService.exploredMaze
-        self.player = gameService.player
-        self.aaImage = aaManager.generateAAImage(player: player)
+    init(maze: [[MazeCellState]]) {
+        self.maze = maze
+        self.gameManager = MazeGameManager(maze: nil)
+        initializeGameState()
     }
     
     func resetGame() {
-        self.gameService = MazeGameService(mazeData: mazeData)
-        self.exploredMaze = gameService.exploredMaze
-        self.player = gameService.player
-        self.aaImage = aaManager.generateAAImage(player: player)
+        initializeGameState()
     }
     
-    func movePlayer(toDirection direction: Direction) {
+    func handlePlayerMovement(fromDirection direction: Direction) {
         var modifiedDirection: Direction
 
         if case .up = direction {
-            let (player, exploredMaze) = gameService.movePlayer(toDirection: player.direction)
+            let (player, exploredMaze, completed) = gameManager.movePlayer(toDirection: player.direction)
             withAnimation {
                 self.player = player
                 self.exploredMaze = exploredMaze
+                self.completed = completed
             }
-            self.aaImage = aaManager.generateAAImage(player: player)
+            self.aaImage = gameManager.aaImage
         } else {
             switch player.direction {
             case .up:
@@ -67,12 +62,20 @@ class MazeGameViewModel: ObservableObject {
                 case .right: modifiedDirection = .down
                 }
             }
-            let (player, exploredMaze) = gameService.changePlayerDirection(to: modifiedDirection)
+            let (player, exploredMaze) = gameManager.changePlayerDirection(to: modifiedDirection)
             withAnimation {
                 self.player = player
                 self.exploredMaze = exploredMaze
             }
-            self.aaImage = aaManager.generateAAImage(player: player)
+            self.aaImage = gameManager.aaImage
         }
+    }
+    
+    private func initializeGameState() {
+        completed = false
+        gameManager.applyMaze(maze)
+        exploredMaze = gameManager.exploredMaze
+        player = gameManager.player
+        aaImage = gameManager.aaImage
     }
 }

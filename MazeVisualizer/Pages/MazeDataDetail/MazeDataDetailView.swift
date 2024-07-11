@@ -68,7 +68,7 @@ struct MazeDataDetailView: View {
             
             Section {
                 NavigationLink {
-                    MazeGameView(mazeData: viewModel.mazeData)
+                    MazeGameView(maze: viewModel.mazeData.maze)
                 } label: {
                     Text("Play Game")
                         .frame(maxWidth: .infinity, alignment: .center)

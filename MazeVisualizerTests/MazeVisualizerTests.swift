@@ -118,18 +118,18 @@ final class MazeVisualizerTests: XCTestCase {
         
         XCTAssertEqual(player.sightWallConfigurations, cellConfig0)
         
-        var aa = AsciiArts.emptyArt
-        aa = aaBuilder.overlay(base: aa, overlay: AsciiArts.Three.three)
-        aa = aaBuilder.overlay(base: aa, overlay: AsciiArts.Four.one)
-        aa = aaBuilder.overlay(base: aa, overlay: AsciiArts.Six.zero)
-        aa = aaBuilder.overlay(base: aa, overlay: AsciiArts.Seven.one)
-        aa = aaBuilder.overlay(base: aa, overlay: AsciiArts.Seven.two)
-        aa = aaBuilder.overlay(base: aa, overlay: AsciiArts.Ten.one)
-        aa = aaBuilder.overlay(base: aa, overlay: AsciiArts.Nine.three)
-        aa = aaBuilder.overlay(base: aa, overlay: AsciiArts.Twelve.three)
-        aa = aaBuilder.overlay(base: aa, overlay: AsciiArts.Thirteen.one)
+        var aa = AsciiArt.empty
+        aa = aaBuilder.overlay(base: aa, overlay: AsciiArt.Three.three)
+        aa = aaBuilder.overlay(base: aa, overlay: AsciiArt.Four.one)
+        aa = aaBuilder.overlay(base: aa, overlay: AsciiArt.Six.zero)
+        aa = aaBuilder.overlay(base: aa, overlay: AsciiArt.Seven.one)
+        aa = aaBuilder.overlay(base: aa, overlay: AsciiArt.Seven.two)
+        aa = aaBuilder.overlay(base: aa, overlay: AsciiArt.Ten.one)
+        aa = aaBuilder.overlay(base: aa, overlay: AsciiArt.Nine.three)
+        aa = aaBuilder.overlay(base: aa, overlay: AsciiArt.Twelve.three)
+        aa = aaBuilder.overlay(base: aa, overlay: AsciiArt.Thirteen.one)
         
-        player = player.move(toDirection: .down)
+        player.move(toDirection: .down)
 
         XCTAssertEqual(player.position.x, 1)
         XCTAssertEqual(player.position.y, 1)
@@ -139,7 +139,7 @@ final class MazeVisualizerTests: XCTestCase {
         XCTAssertEqual(config1_00, CellWallConfiguration(top: .open, left: .wall, bottom: .open, right: .wall))
         XCTAssertEqual(config1_01, CellWallConfiguration(top: .open, left: .wall, bottom: .open, right: .open))
         
-        player = player.move(toDirection: .left)
+        player.move(toDirection: .left)
         
         XCTAssertEqual(player.position.x, 1)
         XCTAssertEqual(player.position.y, 1)
@@ -149,7 +149,7 @@ final class MazeVisualizerTests: XCTestCase {
         XCTAssertEqual(config2_00, CellWallConfiguration(top: .open, left: .wall, bottom: .open, right: .wall))
         XCTAssertEqual(config2_01, CellWallConfiguration(top: .open, left: .wall, bottom: .open, right: .open))
         
-        player = player.move(toDirection: .down)
+        player.move(toDirection: .down)
         
         XCTAssertEqual(player.position.x, 1)
         XCTAssertEqual(player.position.y, 2)
@@ -159,7 +159,7 @@ final class MazeVisualizerTests: XCTestCase {
         XCTAssertEqual(config3_00, CellWallConfiguration(top: .open, left: .wall, bottom: .open, right: .open))
         XCTAssertEqual(config3_01, CellWallConfiguration(top: .open, left: .wall, bottom: .open, right: .wall))
         
-        player = player.move(toDirection: .right)
+        player.move(toDirection: .right)
         
         XCTAssertEqual(player.position.x, 2)
         XCTAssertEqual(player.position.y, 2)
