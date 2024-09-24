@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		A10CFE822C3CC0E900DA5F22 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10CFE812C3CC0E900DA5F22 /* Player.swift */; };
+		A163F0222CA2B405008382E5 /* Clients in Frameworks */ = {isa = PBXBuildFile; productRef = A163F0212CA2B405008382E5 /* Clients */; };
+		A163F0242CA2B405008382E5 /* Features in Frameworks */ = {isa = PBXBuildFile; productRef = A163F0232CA2B405008382E5 /* Features */; };
 		A1BAC9452C3891AD00F96F77 /* MazeVisualizerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BAC9442C3891AD00F96F77 /* MazeVisualizerApp.swift */; };
 		A1BAC9472C3891AD00F96F77 /* MazeGeneratorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BAC9462C3891AD00F96F77 /* MazeGeneratorView.swift */; };
 		A1BAC9492C3891AF00F96F77 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1BAC9482C3891AF00F96F77 /* Assets.xcassets */; };
@@ -63,6 +65,7 @@
 
 /* Begin PBXFileReference section */
 		A10CFE812C3CC0E900DA5F22 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		A163F01A2CA2875A008382E5 /* Core */ = {isa = PBXFileReference; lastKnownFileType = text; path = Core; sourceTree = SOURCE_ROOT; };
 		A1BAC9412C3891AD00F96F77 /* MazeVisualizer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MazeVisualizer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1BAC9442C3891AD00F96F77 /* MazeVisualizerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeVisualizerApp.swift; sourceTree = "<group>"; };
 		A1BAC9462C3891AD00F96F77 /* MazeGeneratorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeGeneratorView.swift; sourceTree = "<group>"; };
@@ -107,6 +110,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A163F0222CA2B405008382E5 /* Clients in Frameworks */,
+				A163F0242CA2B405008382E5 /* Features in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,6 +143,13 @@
 			path = Game;
 			sourceTree = "<group>";
 		};
+		A163F01B2CA2883E008382E5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		A1BAC9382C3891AD00F96F77 = {
 			isa = PBXGroup;
 			children = (
@@ -145,6 +157,7 @@
 				A1BAC9542C3891AF00F96F77 /* MazeVisualizerTests */,
 				A1BAC95E2C3891AF00F96F77 /* MazeVisualizerUITests */,
 				A1BAC9422C3891AD00F96F77 /* Products */,
+				A163F01B2CA2883E008382E5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -161,6 +174,7 @@
 		A1BAC9432C3891AD00F96F77 /* MazeVisualizer */ = {
 			isa = PBXGroup;
 			children = (
+				A163F01A2CA2875A008382E5 /* Core */,
 				A1E8C3282C3B3BFA006C7F85 /* App */,
 				A1E8C30A2C3A75C7006C7F85 /* Utilities */,
 				A10CFE832C3CC2F800DA5F22 /* Game */,
@@ -347,6 +361,10 @@
 			dependencies = (
 			);
 			name = MazeVisualizer;
+			packageProductDependencies = (
+				A163F0212CA2B405008382E5 /* Clients */,
+				A163F0232CA2B405008382E5 /* Features */,
+			);
 			productName = MazeVisualizer;
 			productReference = A1BAC9412C3891AD00F96F77 /* MazeVisualizer.app */;
 			productType = "com.apple.product-type.application";
@@ -419,6 +437,9 @@
 				Base,
 			);
 			mainGroup = A1BAC9382C3891AD00F96F77;
+			packageReferences = (
+				A163F01E2CA2A76C008382E5 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
+			);
 			productRefGroup = A1BAC9422C3891AD00F96F77 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -814,6 +835,28 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A163F01E2CA2A76C008382E5 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.15.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A163F0212CA2B405008382E5 /* Clients */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Clients;
+		};
+		A163F0232CA2B405008382E5 /* Features */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Features;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A1BAC9392C3891AD00F96F77 /* Project object */;
 }

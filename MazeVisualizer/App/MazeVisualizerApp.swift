@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Clients
 
 @main
 struct MazeVisualizerApp: App {
@@ -13,7 +14,7 @@ struct MazeVisualizerApp: App {
         WindowGroup {
             ContentView()
                 .onAppear {
-
+                    CoreSample().coreSampleMethod()
                 }
         }
     }
