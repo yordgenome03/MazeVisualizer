@@ -25,6 +25,10 @@ let package = Package(
     ],
     products: [
         .library(
+            name: "Domain",
+            targets: ["Domain"]
+        ),
+        .library(
             name: "Clients",
             targets: ["Clients"]
         ),
@@ -40,8 +44,13 @@ let package = Package(
     ],
     targets: [
         .target(
+            name: "Domain",
+            swiftSettings: .default
+        ),
+        .target(
             name: "Clients",
             dependencies: [
+                "Domain",
                 .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
             ],
             swiftSettings: .default
@@ -49,6 +58,8 @@ let package = Package(
         .target(
             name: "Features",
             dependencies: [
+                "Domain",
+                "Clients",
                 .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
             ],
             swiftSettings: .default
