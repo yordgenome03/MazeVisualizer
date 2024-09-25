@@ -15,16 +15,16 @@ struct MazeGeneratorView: View {
             Section {
                 HStack {
                     Text("Width: \(viewModel.width)")
-                    Stepper("", value: $viewModel.width, in: 7...31, step: 2)
+                    Stepper("", value: $viewModel.width, in: 7 ... 31, step: 2)
                 }
                 HStack {
                     Text("Height: \(viewModel.height)")
-                    Stepper("", value: $viewModel.height, in: 7...31, step: 2)
+                    Stepper("", value: $viewModel.height, in: 7 ... 31, step: 2)
                 }
             } header: {
                 Text("Maze Size")
             }
-            
+
             Section {
                 Picker("", selection: $viewModel.selectedGenerator) {
                     ForEach(viewModel.generatorList, id: \.self) { generator in
@@ -35,13 +35,13 @@ struct MazeGeneratorView: View {
             } header: {
                 Text("Generation Algorithm")
             }
-            
+
             Section {
                 MazeVisualizationView(maze: viewModel.maze)
                     .frame(maxWidth: .infinity, alignment: .center)
             }
-            .padding()            
-            
+            .padding()
+
             Section {
                 Button {
                     Task {
@@ -54,7 +54,7 @@ struct MazeGeneratorView: View {
             } header: {
                 Text("Generate Maze")
             }
-            
+
             if viewModel.completed {
                 Section {
                     NavigationLink {
@@ -67,7 +67,7 @@ struct MazeGeneratorView: View {
                     Text("Play Maze Game")
                 }
             }
-            
+
             Section {
                 Button {
                     viewModel.showSaveMazeView.toggle()
@@ -90,13 +90,12 @@ struct MazeGeneratorView: View {
         })
     }
 }
-    
+
 struct SaveMazeView: View {
     @StateObject var viewModel: MazeGeneratorViewModel
     @Environment(\.dismiss) var dismiss
-    
+
     var body: some View {
-        
         NavigationStack {
             VStack(spacing: 24) {
                 TextField("Maze Name", text: $viewModel.mazeName)
@@ -105,7 +104,7 @@ struct SaveMazeView: View {
                         RoundedRectangle(cornerRadius: 16)
                             .stroke(Color.accentColor)
                     )
-                
+
                 Button {
                     viewModel.saveMaze()
                     dismiss()

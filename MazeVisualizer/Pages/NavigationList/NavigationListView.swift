@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct NavigationListView: View {
-    
     var body: some View {
         NavigationStack {
             List {
@@ -18,13 +17,13 @@ struct NavigationListView: View {
                     } label: {
                         Text("Maze Generation")
                     }
-                    
+
                     NavigationLink {
                         MazeExplorerView()
                     } label: {
                         Text("Maze Exploration")
                     }
-                    
+
                 } header: {
                     Text("Basics")
                 }

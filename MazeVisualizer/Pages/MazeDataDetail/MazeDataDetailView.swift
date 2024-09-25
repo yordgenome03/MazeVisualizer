@@ -1,5 +1,5 @@
 //
-//  MazeListView.swift
+//  MazeDataDetailView.swift
 //  MazeVisualizer
 //
 //  Created by yotahara on 2024/07/06.
@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct MazeDataDetailView: View {
-    @StateObject var viewModel:  MazeDataDetailViewModel
+    @StateObject var viewModel: MazeDataDetailViewModel
     @Environment(\.dismiss) var dismiss
     @Namespace var namespace
-    
+
     init(mazeData: MazeData) {
-        self._viewModel = StateObject(wrappedValue: MazeDataDetailViewModel(mazeData: mazeData))
+        _viewModel = StateObject(wrappedValue: MazeDataDetailViewModel(mazeData: mazeData))
     }
-    
+
     var body: some View {
         List {
             Section {
@@ -27,7 +27,7 @@ struct MazeDataDetailView: View {
                         .lineLimit(1)
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
-                
+
                 HStack {
                     Text("Shortest distance: ")
                         .font(.footnote)
@@ -35,7 +35,7 @@ struct MazeDataDetailView: View {
                         .font(.subheadline)
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
-                
+
                 HStack {
                     Text("Size: ")
                         .font(.footnote)
@@ -43,29 +43,27 @@ struct MazeDataDetailView: View {
                         .font(.subheadline)
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
-                
+
                 HStack {
                     Text("Show shortest path:")
                         .font(.footnote)
                     Toggle("", isOn: $viewModel.showShortestPath)
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
-            } header: {
-                
-            }
-            
+            } header: {}
+
             Section {
                 if viewModel.showShortestPath {
                     MazeExplorationView(maze: viewModel.exploredMaze,
                                         shortestDistance: viewModel.mazeData.shortestDistance,
                                         showShortestDistance: false)
-                    .frame(maxWidth: .infinity, alignment: .center)
+                        .frame(maxWidth: .infinity, alignment: .center)
                 } else {
                     MazeVisualizationView(maze: viewModel.mazeData.maze)
                         .frame(maxWidth: .infinity, alignment: .center)
                 }
             }
-            
+
             Section {
                 NavigationLink {
                     MazeGameView(maze: viewModel.mazeData.maze)
@@ -73,7 +71,7 @@ struct MazeDataDetailView: View {
                     Text("Play Game")
                         .frame(maxWidth: .infinity, alignment: .center)
                 }
-                
+
                 Button {
                     viewModel.deleteMazeData()
                     dismiss()
@@ -82,10 +80,8 @@ struct MazeDataDetailView: View {
                         .foregroundStyle(Color.red)
                         .frame(maxWidth: .infinity, alignment: .center)
                 }
-            } header: {
-                
-            }
-             
+            } header: {}
+
             Spacer()
         }
         .navigationTitle(viewModel.mazeData.name)

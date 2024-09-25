@@ -8,14 +8,13 @@
 import SwiftUI
 
 struct ContentView: View {
-    
     var body: some View {
         TabView {
             MazeDataListView()
                 .tabItem {
                     Image(systemName: "list.star")
                 }
-            
+
             NavigationListView()
                 .tabItem {
                     Image(systemName: "house")

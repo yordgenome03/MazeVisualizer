@@ -1,5 +1,5 @@
 //
-//  MazeVisualizerApp.swift
+//  AsciiArtBuilder.swift
 //  MazeVisualizer
 //
 //  Created by yotahara on 2024/07/06.
@@ -18,13 +18,13 @@ struct CellWallConfiguration: Equatable {
     var left: WallState
     var bottom: WallState
     var right: WallState
-    
+
     mutating func rotate(to direction: Direction) {
         let defaultTop = top
         let defaultLeft = left
         let defaultBottom = bottom
         let defaultRight = right
-        
+
         switch direction {
         case .up:
             break
@@ -52,7 +52,7 @@ extension [[MazeCellState]] {
         let top: WallState = {
             if y > 0 && y <= self.count - 1 {
                 switch self[y - 1][x] {
-                case .wall:  return .wall
+                case .wall: return .wall
                 case .goal, .start: return .door
                 case .path: return .open
                 }
@@ -60,7 +60,7 @@ extension [[MazeCellState]] {
                 return .wall
             }
         }()
-        
+
         let bottom: WallState = {
             if y >= 0 && y < self.count - 1 {
                 switch self[y + 1][x] {
@@ -72,7 +72,7 @@ extension [[MazeCellState]] {
                 return .wall
             }
         }()
-        
+
         let left: WallState = {
             if x > 0 && x <= self[y].count - 1 {
                 switch self[y][x - 1] {
@@ -84,7 +84,7 @@ extension [[MazeCellState]] {
                 return .wall
             }
         }()
-        
+
         let right: WallState = {
             if x >= 0 && x < self[y].count - 1 {
                 switch self[y][x + 1] {
@@ -95,8 +95,8 @@ extension [[MazeCellState]] {
             } else {
                 return .wall
             }
-        }()        
-        
+        }()
+
         return CellWallConfiguration(top: top,
                                      left: left,
                                      bottom: bottom,
@@ -121,7 +121,6 @@ extension Player {
 }
 
 struct AsciiArtBuilder {
-    
     let aaWallTable: [([String]?, [String]?, [String]?, [String]?)] = [
         (nil, nil, AsciiArt.Zero.two, nil), (nil, nil, AsciiArt.One.two, nil), (nil, nil, AsciiArt.Two.two, nil),
         (AsciiArt.Three.zero, nil, AsciiArt.Three.two, AsciiArt.Three.three), (AsciiArt.Four.zero, AsciiArt.Four.one, AsciiArt.Four.two, nil), (AsciiArt.Five.zero, AsciiArt.Five.one, AsciiArt.Five.two, AsciiArt.Five.three),
@@ -129,7 +128,7 @@ struct AsciiArtBuilder {
         (AsciiArt.Nine.zero, nil, AsciiArt.Nine.two, AsciiArt.Nine.three), (AsciiArt.Ten.zero, AsciiArt.Ten.one, AsciiArt.Ten.two, nil), (AsciiArt.Eleven.zero, AsciiArt.Eleven.one, AsciiArt.Eleven.two, AsciiArt.Eleven.three),
         (AsciiArt.Twelve.zero, nil, nil, AsciiArt.Twelve.three), (AsciiArt.Thirteen.zero, AsciiArt.Thirteen.one, nil, nil), (AsciiArt.Fourteen.zero, AsciiArt.Fourteen.one, nil, AsciiArt.Fourteen.three),
     ]
-    
+
     let aaDoorTable: [([String]?, [String]?, [String]?, [String]?)] = [
         (nil, nil, AsciiArt.Zero.twoD, nil), (nil, nil, AsciiArt.One.twoD, nil), (nil, nil, AsciiArt.Two.twoD, nil),
         (AsciiArt.Three.zeroD, nil, AsciiArt.Three.twoD, AsciiArt.Three.threeD), (AsciiArt.Four.zeroD, AsciiArt.Four.oneD, AsciiArt.Four.twoD, nil), (AsciiArt.Five.zeroD, AsciiArt.Five.oneD, AsciiArt.Five.twoD, AsciiArt.Five.threeD),
@@ -137,66 +136,66 @@ struct AsciiArtBuilder {
         (AsciiArt.Nine.zeroD, nil, AsciiArt.Nine.twoD, AsciiArt.Nine.threeD), (AsciiArt.Ten.zeroD, AsciiArt.Ten.oneD, AsciiArt.Ten.twoD, nil), (AsciiArt.Eleven.zeroD, AsciiArt.Eleven.oneD, AsciiArt.Eleven.twoD, AsciiArt.Eleven.threeD),
         (AsciiArt.Twelve.zeroD, nil, nil, AsciiArt.Twelve.threeD), (AsciiArt.Thirteen.zeroD, AsciiArt.Thirteen.oneD, nil, nil), (AsciiArt.Fourteen.zeroD, AsciiArt.Fourteen.oneD, nil, AsciiArt.Fourteen.threeD),
     ]
-    
+
     func buildAAImage(forConfiguration configuration: [CellWallConfiguration]) -> String {
         var resultAA = AsciiArt.empty
-        
+
         for (index, cellWallConfig) in configuration.enumerated() {
             let aaConfig = aaWallTable[index]
             let aaDoorConfig = aaDoorTable[index]
-            
+
             if case .wall = cellWallConfig.top {
                 if let top = aaConfig.0 {
                     resultAA = overlay(base: resultAA, overlay: top)
-                } 
+                }
             } else if case .door = cellWallConfig.top {
                 if let top = aaDoorConfig.0 {
                     resultAA = overlay(base: resultAA, overlay: top)
-                } 
+                }
             }
-            
+
             if case .wall = cellWallConfig.left {
                 if let left = aaConfig.1 {
                     resultAA = overlay(base: resultAA, overlay: left)
-                } 
+                }
             } else if case .door = cellWallConfig.left {
                 if let left = aaDoorConfig.1 {
                     resultAA = overlay(base: resultAA, overlay: left)
-                } 
+                }
             }
-            
+
             if case .wall = cellWallConfig.right {
                 if let right = aaConfig.3 {
                     resultAA = overlay(base: resultAA, overlay: right)
-                } 
+                }
             } else if case .door = cellWallConfig.right {
                 if let right = aaDoorConfig.3 {
                     resultAA = overlay(base: resultAA, overlay: right)
-                } 
+                }
             }
-            
+
             if case .wall = cellWallConfig.bottom {
                 if let bottom = aaConfig.2 {
                     resultAA = overlay(base: resultAA, overlay: bottom)
-                } 
+                }
             } else if case .door = cellWallConfig.bottom {
                 if let bottom = aaDoorConfig.2 {
                     resultAA = overlay(base: resultAA, overlay: bottom)
-                } 
+                }
             }
         }
-        
+
         return resultAA.joined(separator: "\n")
     }
-    
+
     func overlay(base: [String], overlay: [String]) -> [String] {
         var result = base
-        
+
         for (lineIndex, overlayLine) in overlay.enumerated() {
             if lineIndex >= result.count { continue }
             var newLine = ""
             let baseLine = result[lineIndex]
-            
+
             for (charIndex, overlayChar) in overlayLine.enumerated() {
                 if charIndex >= baseLine.count {
                     newLine.append(" ")
@@ -205,10 +204,10 @@ struct AsciiArtBuilder {
                     newLine.append(overlayChar == "　" ? baseChar : overlayChar)
                 }
             }
-            
+
             result[lineIndex] = newLine
         }
-        
+
         return result
     }
 }

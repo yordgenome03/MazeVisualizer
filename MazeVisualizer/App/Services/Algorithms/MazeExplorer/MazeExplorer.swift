@@ -1,5 +1,5 @@
 //
-//  MazeAlgorithm.swift
+//  MazeExplorer.swift
 //  MazeVisualizer
 //
 //  Created by yotahara on 2024/07/06.

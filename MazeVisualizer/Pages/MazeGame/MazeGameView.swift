@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  MazeGameView.swift
 //  MazeVisualizer
 //
 //  Created by yotahara on 2024/07/06.
@@ -9,19 +9,19 @@ import SwiftUI
 
 struct MazeGameView: View {
     @StateObject private var viewModel: MazeGameViewModel
-    
+
     init(maze: [[MazeCellState]]) {
-        self._viewModel = StateObject(wrappedValue: .init(maze: maze))
+        _viewModel = StateObject(wrappedValue: .init(maze: maze))
     }
-    
+
     var body: some View {
-        VStack {                
+        VStack {
             Text(viewModel.aaImage)
                 .font(.caption2.bold())
                 .frame(maxWidth: .infinity, alignment: .center)
                 .frame(maxHeight: .infinity, alignment: .top)
                 .padding(.top, 80)
-                .overlay { 
+                .overlay {
                     GameView
                         .scaleEffect(0.8)
                         .opacity(0.7)
@@ -30,7 +30,7 @@ struct MazeGameView: View {
                         .offset(y: -20)
                 }
                 .fixedSize(horizontal: false, vertical: true)
-                .overlay { 
+                .overlay {
                     if viewModel.completed {
                         Text("Game Clear")
                             .font(.title.bold())
@@ -42,7 +42,7 @@ struct MazeGameView: View {
                             )
                     }
                 }
-            
+
             HStack(spacing: 10) {
                 Button {
                     viewModel.handlePlayerMovement(fromDirection: .left)
@@ -54,7 +54,7 @@ struct MazeGameView: View {
                                 .fill(Color.mint)
                         )
                 }
-                
+
                 VStack(spacing: 10) {
                     Button {
                         viewModel.handlePlayerMovement(fromDirection: .up)
@@ -64,13 +64,12 @@ struct MazeGameView: View {
                             Image(systemName: "chevron.up")
                         }
                         .frame(width: 140, height: 40)
-                        
                         .background(
                             Rectangle()
                                 .fill(Color.mint)
                         )
                     }
-                    
+
                     Button {
                         viewModel.handlePlayerMovement(fromDirection: .down)
                     } label: {
@@ -82,7 +81,7 @@ struct MazeGameView: View {
                             )
                     }
                 }
-                
+
                 Button {
                     viewModel.handlePlayerMovement(fromDirection: .right)
                 } label: {
@@ -95,7 +94,7 @@ struct MazeGameView: View {
                 }
             }
             .frame(maxHeight: .infinity, alignment: .center)
-            
+
             Button {
                 viewModel.resetGame()
             } label: {
@@ -108,15 +107,15 @@ struct MazeGameView: View {
                             .stroke(Color.red, lineWidth: 2)
                     )
             }
-            .padding()            
+            .padding()
         }
     }
-    
+
     private var GameView: some View {
         VStack(spacing: 0) {
-            ForEach(0..<viewModel.exploredMaze.count, id: \.self) { y in
+            ForEach(0 ..< viewModel.exploredMaze.count, id: \.self) { y in
                 HStack(spacing: 0) {
-                    ForEach(0..<viewModel.exploredMaze[y].count, id: \.self) { x in
+                    ForEach(0 ..< viewModel.exploredMaze[y].count, id: \.self) { x in
                         ZStack {
                             Rectangle()
                                 .foregroundColor(colorForState(viewModel.exploredMaze[y][x]))
@@ -135,9 +134,8 @@ struct MazeGameView: View {
                 }
             }
         }
-        
     }
-    
+
     private func colorForState(_ state: MazeCellExplorationState) -> Color {
         switch state {
         case .notExplored:
@@ -152,7 +150,7 @@ struct MazeGameView: View {
             return .red
         }
     }
-    
+
     private func angleForDirection(_ direction: Direction) -> Angle {
         switch direction {
         case .up:

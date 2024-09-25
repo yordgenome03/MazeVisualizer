@@ -22,7 +22,7 @@ struct MazeExplorerView: View {
             } header: {
                 Text("Selected Maze")
             }
-            
+
             Section {
                 Picker("", selection: $viewModel.selectedExplorer) {
                     ForEach(viewModel.explorerList, id: \.self) { explorer in
@@ -33,17 +33,16 @@ struct MazeExplorerView: View {
             } header: {
                 Text("Exploration Algorithm")
             }
-            
+
             if viewModel.isExploring {
                 MazeExplorationView(maze: viewModel.currentMaze,
                                     shortestDistance: viewModel.shortestDistance)
                     .frame(maxWidth: .infinity, alignment: .center)
-            } 
-            else {
+            } else {
                 MazeVisualizationView(maze: viewModel.selectedMazeData.maze)
                     .frame(maxWidth: .infinity, alignment: .center)
             }
-                        
+
             Section {
                 Button {
                     Task {

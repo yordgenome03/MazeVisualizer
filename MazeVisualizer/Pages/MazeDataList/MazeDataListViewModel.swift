@@ -1,12 +1,12 @@
 //
-//  MazeListViewModel.swift
+//  MazeDataListViewModel.swift
 //  MazeVisualizer
 //
 //  Created by yotahara on 2024/07/06.
 //
 
-import SwiftUI
 import Combine
+import SwiftUI
 
 class MazeDataListViewModel: ObservableObject {
     @Published var mazeDataList: [MazeData] = []

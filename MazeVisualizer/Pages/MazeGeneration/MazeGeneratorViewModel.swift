@@ -1,5 +1,5 @@
 //
-//  MazeViewModel.swift
+//  MazeGeneratorViewModel.swift
 //  MazeVisualizer
 //
 //  Created by yotahara on 2024/07/06.
@@ -15,30 +15,32 @@ class MazeGeneratorViewModel: ObservableObject {
     @Published var showSaveMazeView = false
     @Published var width: Int = 21 {
         didSet {
-            self.maze = Array(repeating: Array(repeating: .wall, count: width), count: height)
+            maze = Array(repeating: Array(repeating: .wall, count: width), count: height)
         }
     }
+
     @Published var height: Int = 21 {
         didSet {
-            self.maze = Array(repeating: Array(repeating: .wall, count: width), count: height)
+            maze = Array(repeating: Array(repeating: .wall, count: width), count: height)
         }
     }
+
     let generatorList: [MazeGeneratorType] = MazeGeneratorType.allCases
     @Published var selectedGenerator: MazeGeneratorType = .recursiveBacktracking
     private var algorithm: MazeGeneratorType = .recursiveBacktracking
     private var currentTask: Task<Void, Never>?
-    
+
     private let repository: MazeRepositoryProtocol = MazeRepository.shared
 
     init() {
-        self.maze = Array(repeating: Array(repeating: .wall, count: width), count: height)
+        maze = Array(repeating: Array(repeating: .wall, count: width), count: height)
     }
 
     func generateMaze() async {
         currentTask?.cancel()
         completed = false
         algorithm = selectedGenerator
-        
+
         let generator: MazeGenerator = {
             switch selectedGenerator {
             case .recursiveBacktracking: return RecursiveBacktrackingMazeGenerator()
@@ -46,7 +48,7 @@ class MazeGeneratorViewModel: ObservableObject {
             case .binaryTree: return BinaryTreeMazeGenerator()
             }
         }()
-        
+
         currentTask = Task {
             let steps = generator.generateMaze(width: width, height: height)
 
@@ -57,20 +59,19 @@ class MazeGeneratorViewModel: ObservableObject {
                 }
                 try? await Task.sleep(nanoseconds: 50_000_000)
             }
-            
+
             completed = true
         }
     }
-    
+
     func saveMaze() {
         guard completed && !mazeName.isEmpty else { return }
         let mazeData = MazeData(name: mazeName, maze: maze, algorithm: algorithm.description)
         repository.saveMaze(mazeData)
     }
-    
+
     func makeMazeData() -> MazeData? {
         guard completed else { return nil }
         return MazeData(name: "", maze: maze, algorithm: algorithm.description)
     }
 }
-

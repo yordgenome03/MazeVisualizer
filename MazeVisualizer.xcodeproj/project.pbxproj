@@ -354,6 +354,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A1BAC9652C3891AF00F96F77 /* Build configuration list for PBXNativeTarget "MazeVisualizer" */;
 			buildPhases = (
+				A1CD4A2C2CA40FB50035570D /* Run SwiftFormat */,
 				A1BAC93D2C3891AD00F96F77 /* Sources */,
 				A1BAC93E2C3891AD00F96F77 /* Frameworks */,
 				A1BAC93F2C3891AD00F96F77 /* Resources */,
@@ -480,6 +481,27 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		A1CD4A2C2CA40FB50035570D /* Run SwiftFormat */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run SwiftFormat";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "echo \"Starting SwiftFormat script...\"\nif [ $(uname -m) = \"arm64\" ]; then\n  echo \"Adding Homebrew paths for Apple Silicon...\"\n  export PATH=\"/opt/homebrew/bin:/opt/homebrew/sbin:${PATH}\"\nelse\n  echo \"Using default PATH...\"\nfi\n\nif which mint >/dev/null; then\n    xcrun --sdk macosx mint run swiftformat .\n\n#  changed_files=$(git diff --name-only HEAD | grep '\\.swift$')\n#  if [ -n \"$changed_files\" ]; then\n#    echo \"Running SwiftFormat on changed files:\"\n#    echo \"$changed_files\" | xargs xcrun --sdk macosx mint run swiftformat\n    echo \"SwiftFormat script completed.\"\n#  else\n#    echo \"No Swift files changed.\"\n#  fi\nelse\n  echo \"warning: Mint not installed.\"\nfi\n\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		A1BAC93D2C3891AD00F96F77 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -588,7 +610,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -651,7 +673,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;

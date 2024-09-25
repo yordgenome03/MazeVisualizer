@@ -34,12 +34,12 @@ class UserDefaultsService {
             return nil
         }
     }
-    
+
     static func getAllMazes() -> [MazeData] {
         let mazeNames = getMazeList()
         return mazeNames.compactMap { loadMaze(named: $0) }
     }
-    
+
     static func deleteMaze(_ mazeData: MazeData) {
         UserDefaults.standard.removeObject(forKey: mazeData.name)
         var mazeList = getMazeList()
@@ -64,4 +64,3 @@ class UserDefaultsService {
         UserDefaults.standard.set(mazeList, forKey: mazeListKey)
     }
 }
-

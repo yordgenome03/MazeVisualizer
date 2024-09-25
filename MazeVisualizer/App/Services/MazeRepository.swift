@@ -17,33 +17,33 @@ protocol MazeRepositoryProtocol {
 
 class MazeRepository: MazeRepositoryProtocol, ObservableObject {
     static let shared = MazeRepository()
-    
+
     @Published var mazeDataList: [MazeData] = []
-    
+
     var mazeDataListPublisher: Published<[MazeData]>.Publisher {
         $mazeDataList
     }
-    
+
     private init() {
-        self.mazeDataList = getAllMazes()
+        mazeDataList = getAllMazes()
     }
-    
+
     func saveMaze(_ mazeData: MazeData) {
         UserDefaultsService.saveMaze(mazeData)
-        self.mazeDataList = getAllMazes()
+        mazeDataList = getAllMazes()
     }
-    
+
     func getAllMazes() -> [MazeData] {
         var mazeDatas = [MazeData.default]
         mazeDatas.append(contentsOf: UserDefaultsService.getAllMazes())
         return mazeDatas
     }
-    
+
     func deleteMaze(_ mazeData: MazeData) {
         UserDefaultsService.deleteMaze(mazeData)
-        self.mazeDataList = getAllMazes()
+        mazeDataList = getAllMazes()
     }
-    
+
     func deleteMazes(_ mazeDataList: [MazeData]) {
         UserDefaultsService.deleteMazes(mazeDataList)
         self.mazeDataList = getAllMazes()

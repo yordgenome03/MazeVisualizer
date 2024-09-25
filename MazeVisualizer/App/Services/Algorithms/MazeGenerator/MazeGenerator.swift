@@ -1,5 +1,5 @@
 //
-//  MazeAlgorithm.swift
+//  MazeGenerator.swift
 //  MazeVisualizer
 //
 //  Created by yotahara on 2024/07/06.
@@ -22,6 +22,6 @@ enum MazeGeneratorType: String, CustomStringConvertible, CaseIterable {
     case recursiveBacktracking = "Recursive Backtracking"
     case growingTree = "Growing Tree"
     case binaryTree = "Binary Tree"
-    
-    var description: String { self.rawValue }
+
+    var description: String { rawValue }
 }

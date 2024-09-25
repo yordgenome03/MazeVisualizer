@@ -11,21 +11,21 @@ struct MazeExplorationView: View {
     let maze: [[ExplorationState]]
     let shortestDistance: Int?
     let showShortestDistance: Bool
-    
+
     init(maze: [[ExplorationState]], shortestDistance: Int?, showShortestDistance: Bool = true) {
         self.maze = maze
         self.shortestDistance = shortestDistance
         self.showShortestDistance = showShortestDistance
     }
-    
+
     var body: some View {
         VStack(spacing: 0) {
             if showShortestDistance {
                 HStack {
                     Text("Shortest Distance:")
-                    
+
                     Spacer()
-                    
+
                     Text("\(shortestDistance != nil ? "\(String(describing: shortestDistance!))" : " ?")")
                 }
                 .padding(.bottom)
@@ -43,7 +43,7 @@ struct MazeExplorationView: View {
             }
         }
     }
-    
+
     private func color(for cell: ExplorationState) -> Color {
         switch cell {
         case .notExplored:

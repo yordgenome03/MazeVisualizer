@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  MazeGameViewModel.swift
 //  MazeVisualizer
 //
 //  Created by yotahara on 2024/07/06.
@@ -10,21 +10,21 @@ import SwiftUI
 class MazeGameViewModel: ObservableObject {
     let maze: [[MazeCellState]]
     @Published var exploredMaze: [[MazeCellExplorationState]] = []
-    @Published var player: Player = Player(position: (1, 0), direction: .down, maze: [])
+    @Published var player: Player = .init(position: (1, 0), direction: .down, maze: [])
     @Published var aaImage: String = AsciiArt.empty.joined(separator: "\n")
     @Published var completed = false
     private let gameManager: MazeGameManager
-    
+
     init(maze: [[MazeCellState]]) {
         self.maze = maze
-        self.gameManager = MazeGameManager(maze: nil)
+        gameManager = MazeGameManager(maze: nil)
         initializeGameState()
     }
-    
+
     func resetGame() {
         initializeGameState()
     }
-    
+
     func handlePlayerMovement(fromDirection direction: Direction) {
         var modifiedDirection: Direction
 
@@ -35,11 +35,11 @@ class MazeGameViewModel: ObservableObject {
                 self.exploredMaze = exploredMaze
                 self.completed = completed
             }
-            self.aaImage = gameManager.aaImage
+            aaImage = gameManager.aaImage
         } else {
             switch player.direction {
             case .up:
-                modifiedDirection = direction    
+                modifiedDirection = direction
             case .down:
                 switch direction {
                 case .up: modifiedDirection = .down
@@ -54,7 +54,7 @@ class MazeGameViewModel: ObservableObject {
                 case .left: modifiedDirection = .down
                 case .right: modifiedDirection = .up
                 }
-            case.right:
+            case .right:
                 switch direction {
                 case .up: modifiedDirection = .right
                 case .down: modifiedDirection = .left
@@ -67,10 +67,10 @@ class MazeGameViewModel: ObservableObject {
                 self.player = player
                 self.exploredMaze = exploredMaze
             }
-            self.aaImage = gameManager.aaImage
+            aaImage = gameManager.aaImage
         }
     }
-    
+
     private func initializeGameState() {
         completed = false
         gameManager.applyMaze(maze)

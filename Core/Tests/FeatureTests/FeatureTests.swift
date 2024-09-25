@@ -1,6 +1,6 @@
 //
 //  FeatureTests.swift
-//  
+//
 //
 //  Created by yotahara on 2024/09/24.
 //
@@ -8,7 +8,6 @@
 import XCTest
 
 final class FeatureTests: XCTestCase {
-
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
@@ -27,9 +26,8 @@ final class FeatureTests: XCTestCase {
 
     func testPerformanceExample() throws {
         // This is an example of a performance test case.
-        self.measure {
+        measure {
             // Put the code you want to measure the time of here.
         }
     }
-
 }

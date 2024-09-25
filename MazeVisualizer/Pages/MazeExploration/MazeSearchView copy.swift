@@ -1,5 +1,5 @@
 //
-//  MazeView.swift
+//  MazeSearchView copy.swift
 //  MazeVisualizer
 //
 //  Created by yotahara on 2024/07/06.
@@ -10,14 +10,14 @@ import SwiftUI
 struct MazeGenerationView: View {
     let mazeSize: Int = 27
     @ObservedObject var viewModel: MazeGenerationViewModel
-    
+
     var body: some View {
         List {
             Section {
                 VStack(spacing: 0) {
-                    ForEach(0..<viewModel.maze.count, id: \.self) { y in
+                    ForEach(0 ..< viewModel.maze.count, id: \.self) { y in
                         HStack(spacing: 0) {
-                            ForEach(0..<viewModel.maze[y].count, id: \.self) { x in
+                            ForEach(0 ..< viewModel.maze[y].count, id: \.self) { x in
                                 Rectangle()
                                     .fill(self.color(for: viewModel.maze[y][x]))
                                     .frame(width: 10, height: 10)
@@ -27,7 +27,7 @@ struct MazeGenerationView: View {
                 }
             }
             .padding()
-            
+
             Section {
                 Button {
                     Task {
@@ -47,13 +47,12 @@ struct MazeGenerationView: View {
             } header: {
                 Text("Regenerate Maze")
             }
-            
+
             Section {
                 TextField("Maze Name", text: $viewModel.mazeName)
                     .font(.body)
                     .padding()
-                
-                
+
                 Button {
                     viewModel.saveMaze()
                 } label: {
@@ -80,7 +79,7 @@ struct MazeGenerationView: View {
             }
         }
     }
-    
+
     func color(for cell: MazeCell) -> Color {
         switch cell {
         case .wall:

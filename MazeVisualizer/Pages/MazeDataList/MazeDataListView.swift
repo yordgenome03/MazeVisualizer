@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MazeDataListView: View {
     @StateObject var viewModel: MazeDataListViewModel = .init()
-    
+
     var body: some View {
         NavigationStack {
             List {
@@ -24,7 +24,7 @@ struct MazeDataListView: View {
             .navigationTitle("Saved Maze List")
         }
     }
-    
+
     private func MazeDataListRow(_ mazeData: MazeData) -> some View {
         VStack {
             HStack {
@@ -40,7 +40,7 @@ struct MazeDataListView: View {
                     .lineLimit(1)
             }
             .frame(maxWidth: .infinity, alignment: .leading)
-            
+
             HStack {
                 Text("Shortest distance: ")
                     .font(.footnote)
@@ -48,7 +48,7 @@ struct MazeDataListView: View {
                     .font(.subheadline)
             }
             .frame(maxWidth: .infinity, alignment: .leading)
-            
+
             HStack {
                 Text("Size: ")
                     .font(.footnote)
